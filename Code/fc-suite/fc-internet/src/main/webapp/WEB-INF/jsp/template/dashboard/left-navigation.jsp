@@ -14,8 +14,6 @@
 							<li><a href="${pageContext.request.contextPath}/admin/student-details-enrollment"><span
 									class="nav-icon icon-student"></span><span class="nav-text">Students</span></a>
 							</li>
-<!-- 							<li><a href="#"><span class="nav-icon icon-parents"></span><span -->
-<!-- 									class="nav-text">Parents</span></a></li> -->
 							<li id="employee-menu"><a href="${pageContext.request.contextPath}/admin/employee-details-enrollment"><span 
                                                                     class="nav-icon icon-employee"></span><span class="nav-text">Employee</span></a></li>
 							<li><a href="#"><span class="nav-icon icon-manager"></span><span

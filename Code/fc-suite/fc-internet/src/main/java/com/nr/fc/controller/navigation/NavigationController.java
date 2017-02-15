@@ -35,4 +35,17 @@ public class NavigationController {
         return "first-login";
     }
 
+     //##################################
+    //Group creation
+   //##################################
+    
+    @RequestMapping(value =  NavigationPath.ADMIN_PREFIX + NavigationPath.CREATE_GROUP, method = RequestMethod.GET)
+    public String createGroup() {
+        return "create-group";
+    }
+    
+    @RequestMapping(value = NavigationPath.ADMIN_PREFIX +  NavigationPath.SEARCH_GROUP, method = RequestMethod.GET)
+    public String searchGroup() {
+        return "search-group";
+    }
 }

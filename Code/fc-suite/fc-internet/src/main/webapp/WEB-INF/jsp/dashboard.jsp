@@ -163,14 +163,12 @@
                                                     </a>
                                                 </li>
                                             </security:authorize>
-                                            <security:authorize access="hasRole('1039') or hasRole('1045') or hasRole('1130')">
                                                 <li>
-                                                    <a href="#" class="dash-nav" id="submenu-employee">                                          
+                                                    <a href="#" class="dash-nav" id="submenu-group">                                          
                                                         <i class="fa fa-user"></i>
-                                                        <span class="nav-text">Employee</span>
+                                                        <span class="nav-text">Group</span>
                                                     </a> 
-                                                </li>
-                                            </security:authorize>
+                                                </li>                    
                                             <security:authorize access="hasRole('1057') or hasRole('1061') or hasRole('1065') or hasRole('1069') or hasRole('1077') or hasRole('1079')">
                                                 <li>
                                                     <a href="#"  class="dash-nav" id="submenu-courses">
@@ -779,38 +777,27 @@
                                                         </ul>
                                                     </div>
                                                 </security:authorize>
-                                                <security:authorize access="hasRole('1039') or hasRole('1045') or hasRole('1130')">
-                                                    <div class="submenu submenu-employee clearfix" id=""> 
-                                                        <h4>Employee</h4> 
+                                                    <div class="submenu submenu-group clearfix" id=""> 
+                                                        <h4>Group</h4> 
                                                         <ul class="submenu-nav">
-                                                            <security:authorize ifAnyGranted="1039">
+                                                           
                                                                 <li>
-                                                                    <a href="${pageContext.request.contextPath}/admin/employee-details-enrollment" class=""> 
+                                                                    <a href="${pageContext.request.contextPath}/admin/create-group" class=""> 
                                                                         <i class="fa fa-user"></i>
-                                                                        <span class="nav-text">Add Employee</span>
+                                                                        <span class="nav-text">Add Group</span>
                                                                     </a> 
                                                                 </li>
-                                                            </security:authorize>
-                                                            <security:authorize ifAnyGranted="1045">
+                                                      
+                                                            
                                                                 <li> 
-                                                                    <a href="${pageContext.request.contextPath}/admin/employee-details-search">
+                                                                    <a href="${pageContext.request.contextPath}/admin/search-group">
                                                                         <i class="fa fa-user"></i> 
-                                                                        <span class="nav-text">Search Employee</span> 
+                                                                        <span class="nav-text">Search Group</span> 
 
                                                                     </a> 
-                                                                </li> 
-                                                            </security:authorize>
-                                                            <security:authorize ifAnyGranted="1130">
-                                                                <li> 
-                                                                    <a href="${pageContext.request.contextPath}/admin/employee-designation-enrollment" style="height:73px;">
-                                                                        <i class="fa fa-user"></i>
-                                                                        <span class="nav-text">Master Setup</span> 
-                                                                    </a> 
-                                                                </li> 
-                                                            </security:authorize>
+                                                                </li>                                                                                                                
                                                         </ul>
                                                     </div>
-                                                </security:authorize>
                                                 <security:authorize access="hasRole('1081') or hasRole('1082') or hasRole('1085') or hasRole('1086') or hasRole('1087') or hasRole('1089') or hasRole('1088')">
                                                     <div class="submenu submenu-class clearfix" id=""> 
                                                         <h4>Class</h4> 

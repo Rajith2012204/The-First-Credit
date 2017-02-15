@@ -26,5 +26,11 @@ public class NavigationPath {
     //FILE UPLOAD
     //##################################
     public static final String FILE_UPLOAD = "/file-upload";//not use
+    
+    //##################################
+    //Group creation
+    //##################################
+     public static final String CREATE_GROUP = "/create-group";
+     public static final String SEARCH_GROUP = "/search-group";
 
 }

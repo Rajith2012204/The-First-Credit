@@ -269,7 +269,7 @@
 
 
             <!-- ############# LEFT NAVIGATION ############# -->
-            <script src="${pageContext.servletContext.contextPath}/resources/js/my-alerts.js"></script>
+            <!--<script src="${pageContext.servletContext.contextPath}/resources/js/my-alerts.js"></script>-->
             <script src="${pageContext.servletContext.contextPath}/resources/js/init.js"></script>
 
             <script src="${pageContext.servletContext.contextPath}/resources/libs/assets/timedout.js"></script>

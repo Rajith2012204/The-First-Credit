@@ -438,25 +438,19 @@
                                     </ul>
                                 </li>
                             </security:authorize>
-                            <security:authorize access="hasRole('1039') or hasRole('1045') or hasRole('1130')">
+                           
 
                                 <li id="employee-menu" class="side">
                                     <a href="#"> 
-                                        <span class="nav-icon"><i class="fa fa-user"></i></span><span class="nav-text">Employee</span>
+                                        <span class="nav-icon"><i class="fa fa-user"></i></span><span class="nav-text">Group</span>
                                     </a> 
-                                    <ul> 
-                                        <security:authorize ifAnyGranted="1039">
-                                            <li><a href="${pageContext.request.contextPath}/admin/employee-details-enrollment">Add Employee</a></li>
-                                        </security:authorize>
-                                        <security:authorize ifAnyGranted="1045">
-                                            <li><a href="${pageContext.request.contextPath}/admin/employee-details-search">Search Employee</a></li>
-                                        </security:authorize>
-                                        <security:authorize ifAnyGranted="1130">
-                                            <li><a href="${pageContext.request.contextPath}/admin/employee-designation-enrollment">Master Setup</a></li>
-                                        </security:authorize>
+                                    <ul>                           
+                                            <li><a href="${pageContext.request.contextPath}/admin/create-group">Add Group</a></li>
+                                                                        
+                                            <li><a href="${pageContext.request.contextPath}/admin/search-group">Search Group</a></li>
+                                        
                                     </ul> 
                                 </li>
-                            </security:authorize>
                             <security:authorize access="hasRole('1057') or hasRole('1061') or hasRole('1065') or hasRole('1069') or hasRole('1077') or hasRole('1079')">
 
                                 <li id="program-menu" class="side">
