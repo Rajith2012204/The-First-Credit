@@ -377,18 +377,18 @@ function showSaveMsg(memberId) {
     dialogInstance.open();
 
     setTimeout(function () {
-        showHeadings(studentId);
+        showHeadings(memberId);
         dialogInstance.close();
         imageLoaded = false;
-        window.location.href = "member-details-enrollment-modify?customerId=" + studentId;
+        window.location.href = "member-details-enrollment-modify?customerId=" + memberId;
     }, 3000);
 
 }
 
 
-function showHeadings(studentId) {
+function showHeadings(memberId) {
 
-    $("#ref-no").val(studentId);
+    $("#ref-no").val(memberId);
     document.getElementById("modal").removeAttribute("hidden");
     document.getElementById("details-enrollment").setAttribute("href", "student-details-enrollment-modify?studentId=" + $("#ref-no").val());
     document.getElementById("bussiness-details").setAttribute("href", "student-qualification-enrollment?studentId=" + $("#ref-no").val());

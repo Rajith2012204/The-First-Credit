@@ -37,5 +37,5 @@ public class NavigationPath {
     //Member creation
     //##################################
    public static final String CREATE_MEMBER= "/create-member";
-   public static final String CREATE_MEMBER_MODIFY= "/create-member-modify";
+   public static final String CREATE_MEMBER_MODIFY= "/member-details-enrollment-modify";
 }
