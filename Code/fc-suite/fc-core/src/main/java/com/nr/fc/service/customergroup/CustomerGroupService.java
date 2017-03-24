@@ -21,6 +21,13 @@ public interface CustomerGroupService {
 
     /**
      *
+     * @param groupId
+     * @return
+     */
+    public CustomerGroup findByGroupId(String groupId);
+
+    /**
+     *
      * @return
      */
     public String getLastGroupID();

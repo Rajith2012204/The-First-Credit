@@ -65,11 +65,11 @@
         <script src="${pageContext.servletContext.contextPath}/resources/libs/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>        
         <script src="${pageContext.servletContext.contextPath}/resources/libs/bootstrap-input/js/fileinput.min.js"></script>
         <script src="${pageContext.servletContext.contextPath}/resources/libs/jPushMenu/js/jPushMenu.js"></script>
-        <script src="${pageContext.servletContext.contextPath}/resources/libs/jquery-validation/js/additional-methods.min.js"></script>
         <script src="${pageContext.servletContext.contextPath}/resources/libs/jquery-validation/js/jquery.validate.min.js"></script>
         <script src="${pageContext.servletContext.contextPath}/resources/libs/bootstrap-combobox/js/bootstrap-combobox.js"></script>
         <!--<script src="${pageContext.servletContext.contextPath}/resources/libs/dragula/js/dragula.js"></script>-->
         <script src="${pageContext.servletContext.contextPath}/resources/libs/dragula/js/dragula-min.js"></script>
+                <script src="${pageContext.servletContext.contextPath}/resources/libs/jquery-validation/js/additional-methods.min.js"></script>
 
 
 

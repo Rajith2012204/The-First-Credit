@@ -2,7 +2,7 @@
 // VARIABLES
 // #############################
 var saveUrl = "create-group/save";
-var readUrl = "country/find";
+var readUrl = "create-group/find/groupId";
 var updateUrl = "country/update";
 
 var token = $("#txtSecurityToken").val();
@@ -75,16 +75,6 @@ $(document).ready(function () {
     //loadData();
 });
 
-function loadData() {
-
-    //Loads from database
-    data = ajaxData(readUrl, "GET");
-    console.log(data);
-    //Loading database data to bootstrap table
-    table.bootstrapTable('load', data);
-
-}
-
 //#############################
 //GETTER & SETTER
 //#############################
@@ -101,27 +91,27 @@ function getData() {
             title: "Group Officer",
             colomn: "groupOfficer",
             value: $("#group-officer").val()
-        },{
+        }, {
             title: "Meeting Day",
             colomn: "meetingDay",
             value: $("#meeting-day").val()
-        },{
+        }, {
             title: "Group Branch",
             colomn: "groupBranch",
             value: $("#group-Branch").val()
-        },{
+        }, {
             title: "Group Address",
             colomn: "groupAddress",
             value: $("#meeting-day").val()
-        },{
+        }, {
             title: "Contact Number",
             colomn: "contactNumber",
             value: $("#group-contact-number").val()
-        },{
+        }, {
             title: "",
             colomn: "details",
             value: $("#details").val()
-        },{
+        }, {
             title: "Status",
             colomn: "status",
             value: $("#status").val()
@@ -154,10 +144,10 @@ addBtn.click(function () {
 
 function validateForm(msg) {
 
-  //  if (isValidCountry()) {
-        showSaveconfirmation(msg);
-   // } else {
-      //  focusInvalid();
+    //  if (isValidCountry()) {
+    showSaveconfirmation(msg);
+    // } else {
+    //  focusInvalid();
     //}
 }
 
@@ -232,9 +222,10 @@ function showSaveMsg(Id) {
     dialogInstance.setType(BootstrapDialog.TYPE_SUCCESS);
     dialogInstance.open();
 
-    setTimeout(function () {
-        clearBtn.click();
+    setTimeout(function () {        
         dialogInstance.close();
+        var data = ajaxLoadData(readUrl, "GET", Id);
+        setGroupData(data);
     }, 3000);
 }
 
@@ -265,16 +256,19 @@ function saveData(url, type, data) {
     });
 }
 
-function ajaxData(url, type, data) {
+function ajaxLoadData(url, type, groupId) {
+
     var returnData = null;
+    console.log(groupId);
     $.ajax({
         type: type,
         url: url,
-        async: false,
-        headers: {
+        async: false,       
+        data:{
+        groupId: groupId
+        },headers: {
             'X-CSRF-TOKEN': token
         },
-        data: data,
         success: function (data) {
             returnData = data;
         },
@@ -308,4 +302,18 @@ window.operateEvents = {
         $('#add').html('Update');
     }
 };
+
+function setGroupData(data){
+ 
+ $("#group-name").val(data.groupName);
+ $("#establishment").val(data.dateOfEstablishment);
+ $("#group-officer").val(data.employeeName);
+ $("#meeting-day").val(data.meetingDate);
+ $("#group-Branch").val(data.branch);
+ $("#group-contact-number").val(data.contact);
+ $("#details").val(data.description);
+ $("#status").val(data.status);
+ 
+}
+
 
