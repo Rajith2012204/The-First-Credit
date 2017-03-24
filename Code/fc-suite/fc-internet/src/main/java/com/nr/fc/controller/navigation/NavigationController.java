@@ -35,31 +35,35 @@ public class NavigationController {
         return "first-login";
     }
 
-     //##################################
+    //##################################
     //Group creation
-   //##################################
-    
-    @RequestMapping(value =  NavigationPath.ADMIN_PREFIX + NavigationPath.CREATE_GROUP, method = RequestMethod.GET)
+    //##################################
+    @RequestMapping(value = NavigationPath.ADMIN_PREFIX + NavigationPath.CREATE_GROUP, method = RequestMethod.GET)
     public String createGroup() {
         return "create-group";
     }
-    
-    @RequestMapping(value = NavigationPath.ADMIN_PREFIX +  NavigationPath.SEARCH_GROUP, method = RequestMethod.GET)
+
+    @RequestMapping(value = NavigationPath.ADMIN_PREFIX + NavigationPath.SEARCH_GROUP, method = RequestMethod.GET)
     public String searchGroup() {
         return "search-group";
     }
-     //##################################
+    //##################################
     //Member creation
-   //##################################
-    
-    @RequestMapping(value =  NavigationPath.ADMIN_PREFIX + NavigationPath.CREATE_MEMBER, method = RequestMethod.GET)
+    //##################################
+
+    @RequestMapping(value = NavigationPath.ADMIN_PREFIX + NavigationPath.CREATE_MEMBER, method = RequestMethod.GET)
     public String createMember() {
         return "member-details-enrollment";
     }
-    
-   @RequestMapping(value =  NavigationPath.ADMIN_PREFIX + NavigationPath.CREATE_MEMBER_MODIFY, method = RequestMethod.GET)
+
+    @RequestMapping(value = NavigationPath.ADMIN_PREFIX + NavigationPath.CREATE_MEMBER_MODIFY, method = RequestMethod.GET)
     public String modifyMember() {
         return "member-details-enrollment-modify";
     }
-    
+
+    @RequestMapping(value = NavigationPath.ADMIN_PREFIX + NavigationPath.CREATE_MEMBER_BUSINESS_DETAILS, method = RequestMethod.GET)
+    public String createBusinessDetails() {
+        return "member-business-details-enrollment";
+    }
+
 }

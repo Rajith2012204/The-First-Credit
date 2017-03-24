@@ -107,132 +107,96 @@
                     </div>
 
 
-
                     <div class="form-group">
-                        <label class="control-label col-sm-2 col-md-4 checkbox"
-                               for="email-checkbox"> Handles by</label>
-                        <div class="col-xs-1 col-push-2">
-                            <input type="checkbox" class="other checkbox" id="email-checkbox"
-                                   name="alert" checked="checked">
+                        <label class="control-label col-sm-2 col-md-3 is-required "
+                               for="first-name">Handles by</label>
+                        <div class="radio col-sm-offset-2 col-md-offset-3">
+                            <label class="control-label checkbox" for="partnership">Owned</label>
+                            <div class="col-xs-1 col-sm-1">
+                                <input type="checkbox" class="other checkbox" id="email-checkbox"
+                                       name="alert" checked="checked">
+                            </div>
+                            <label class="control-label radio " for="single">Son</label>
+                            <div class="col-xs-1 col-sm-1">
+                                <input type="checkbox" class="other checkbox" id="email-checkbox"
+                                       name="alert" checked="checked">
+                            </div>
+                        </div>
+                        <div class="radio col-sm-offset-2 col-md-offset-3">
+                            <label class="control-label checkbox" for="partnership">Father</label>
+                            <div class="col-xs-1 col-sm-1">
+                                <input type="checkbox" class="other checkbox" id="email-checkbox"
+                                       name="alert" checked="checked">
+                            </div>
+                            <label class="control-label radio " for="single">Brother</label>
+                            <div class="col-xs-1 col-sm-1">
+                                <input type="checkbox" class="other checkbox" id="email-checkbox"
+                                       name="alert" checked="checked">
+                            </div>
+                        </div>
+                        <div class="radio col-sm-offset-2 col-md-offset-3">
+                            <label class="control-label checkbox" for="partnership">Spouse</label>
+                            <div class="col-xs-1 col-sm-1">
+                                <input type="checkbox" class="other checkbox" id="email-checkbox"
+                                       name="alert" checked="checked">
+                            </div>
+                            <label class="control-label radio " for="single">Daughter</label>
+                            <div class="col-xs-1 col-sm-1">
+                                <input type="checkbox" class="other checkbox" id="email-checkbox"
+                                       name="alert" checked="checked">
+                            </div>
+                        </div>
+                        <div class="radio col-sm-offset-2 col-md-offset-3">
+                            <label class="control-label checkbox" for="partnership">Mother</label>
+                            <div class="col-xs-1 col-sm-1">
+                                <input type="checkbox" class="other checkbox" id="email-checkbox"
+                                       name="alert" checked="checked">
+                            </div>
+                            <label class="control-label radio " for="single">Sister</label>
+                            <div class="col-xs-1 col-sm-1">
+                                <input type="checkbox" class="other checkbox" id="email-checkbox"
+                                       name="alert" checked="checked">
+                            </div>
+                        </div>
+                        <div class="radio col-sm-offset-2 col-md-offset-3">
+                            <label class="control-label checkbox" for="partnership">Other</label>
+                            <div class="col-xs-1 col-sm-1">
+                                <input type="checkbox" class="other checkbox" id="email-checkbox"
+                                       name="alert" checked="checked">
+                            </div>
                         </div>
                     </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
 
                     <div class="form-group">
                         <label class="control-label col-sm-2 col-md-3 is-required"
-                               for="dob">DOB</label>
+                               for="no-of-family-members">No of employees</label>
                         <div class="col-sm-10 col-md-9">
-                            <div class="input-group date">
-                                <input type="text" class="form-control dob-datepicker other"
-                                       id="dob" name="dob" data-date-format="mm/dd/yyyy" /> <span
-                                       class="input-group-addon"> <span
-                                        class="glyphicon glyphicon-calendar"></span>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label col-sm-2 col-md-3"
-                               for="age">Age</label>
-                        <div class="col-sm-10 col-md-9">
-                            <input type="text" disabled="disabled"
-                                   class="form-control numberValClass other" id="age" name="age" placeholder="Age"
-                                   maxlength="2">
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="control-label col-sm-2 col-md-3"
-                               for="ref-no">Identification Number</label>
-                        <div class="col-sm-4">
-                            <select class="form-control other" id="id-type" name="id-type">
-                                <option value="NIC">NIC</option>
-                                <option value="Passport">Passport No.</option>
-                                <option value="Driving Licence">Driving Licence</option>
-                            </select>
-                        </div>
-                        <div class="col-sm-5 col-md-5">
-                            <input type="text" class="form-control stringNumberValClass other"
-                                   id="idenfition-no" name="idenfition-no" maxlength="20"
-                                   placeholder="NIC/PP/DL">
+                            <input type="text" class="form-control lastNameVal other"
+                                   id="no-family" name="no-family" placeholder="No of employees"
+                                   maxlength="30">
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="control-label col-sm-2 col-md-3 is-required "
-                               for="issued-country">Issued country</label>
-                        <div class="col-sm-10 col-md-9">
-                            <input type="text" class="form-control  other"
-                                   id="issued-country" name="issued-country" placeholder="Issued country"
-                                   maxlength="30">
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="control-label col-sm-2 col-md-3 is-required"
-                               for="occupation">Occupation</label>
-                        <div class="col-sm-10 col-md-9">
-                            <input type="text" class="form-control lastNameVal other"
-                                   id="occupation" name="occupation" placeholder="Occupation"
-                                   maxlength="30">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label col-sm-2 col-md-3 is-required"
-                               for="no-of-family-members">No of family members</label>
-                        <div class="col-sm-10 col-md-9">
-                            <input type="text" class="form-control lastNameVal other"
-                                   id="no-family" name="no-family" placeholder="No of family members"
-                                   maxlength="30">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label col-sm-2 col-md-3 is-required"
-                               for="no-dependents">Number of dependents</label>
-                        <div class="col-sm-10 col-md-9">
-                            <input type="text" class="form-control lastNameVal other"
-                                   id="no-dependents" name="no-dependents" placeholder="Number of dependents"
-                                   maxlength="30">
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="control-label col-sm-2 col-md-3"
-                               for="last-name">Profile Image</label>
-                        <div class="col-sm-10 col-md-9">
-                            <input id="input-id" type="file" name="files[]" class="uploadFile file" accept="image/*"
-                                   data-preview-file-type="text" data-show-upload="false" data-show-remove="true">
+                               for="first-name">Business Reputation</label>
+                        <div class="radio col-sm-offset-2 col-md-offset-3">
+                            <label class="control-label radio" for="partnership">Satisfied</label>
+                            <div class="col-xs-1 col-sm-1">
+                                <input type="radio" class="other" name="ownership" id="partnership"
+                                       checked="checked">
+                            </div>
+                            <label class="control-label radio " for="single">Average</label>
+                            <div class="col-xs-1 col-sm-1">
+                                <input type="radio" class="other" name="ownership" id="single">
+                            </div>
+                            <label class="control-label radio " for="single">UnSatisfied</label>
+                            <div class="col-xs-1 col-sm-1">
+                                <input type="radio" class="other" name="ownership" id="single">
+                            </div>
                         </div>
                     </div>
 
@@ -240,119 +204,85 @@
             </div>
             <div class="col-sm-6">
                 <div class="form-section">
-                    <h3 class="form-subheading">Address Details</h3>
+                    <h3 class="form-subheading">Business Sector</h3>
                     <div class="form-group">
-                        <label class="control-label col-sm-3 is-required" for="add1">Street
-                            Address 1</label>
+                        <label class="control-label col-sm-3 is-required" for="add1">Business 01</label>
                         <div class="col-sm-9">
                             <input type="text" class="form-control other" id="personal-add1"
-                                   name="personal-add1" placeholder="Street Address 1" maxlength="250">
+                                   name="personal-add1" placeholder="Business 01" maxlength="250">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="control-label col-sm-3" for="add2">Street
-                            Address 2</label>
+                        <label class="control-label col-sm-3 is-required" for="add1">Business 02</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control other" id="personal-add2"
-                                   placeholder="Street Address 2" maxlength="250">
+                            <input type="text" class="form-control other" id="personal-add1"
+                                   name="personal-add1" placeholder="Business 02" maxlength="250">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="control-label col-sm-3 is-required"
-                               for="personal-city">City</label>
+                        <label class="control-label col-sm-3 is-required" for="add1">Business 03</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control other" id="personal-city"
-                                   placeholder="City" maxlength="250">
+                            <input type="text" class="form-control other" id="personal-add1"
+                                   name="personal-add1" placeholder="Business 03" maxlength="250">
+                        </div>
+                    </div>
+                    <h3 class="form-subheading">Business Sub Sector</h3>
+                    <div class="form-group">
+                        <label class="control-label col-sm-3 is-required" for="add1">Business 01</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control other" id="personal-add1"
+                                   name="personal-add1" placeholder="Business 01" maxlength="250">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="control-label col-sm-3"
-                               for="personal-province">State</label>
+                        <label class="control-label col-sm-3 is-required" for="add1">Business 02</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control other" id="personal-province"
-                                   placeholder="State" maxlength="250">
+                            <input type="text" class="form-control other" id="personal-add1"
+                                   name="personal-add1" placeholder="Business 02" maxlength="250">
                         </div>
                     </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-3 is-required" for="add1">Business 03</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control other" id="personal-add1"
+                                   name="personal-add1" placeholder="Business 03" maxlength="250">
+                        </div>
+                    </div>
+
+                    <h3 class="form-subheading">Address Details</h3>
+                    <div class="form-group">
+                        <label class="control-label col-sm-3 is-required" for="add1">Business Place address</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control other" id="personal-add1"
+                                   name="personal-add1" placeholder="Business Place address" maxlength="250">
+                        </div>
+
+                        </div>
+
+
+
+                        <div class="form-group">
+                            <div class="col-sm-offset-3 col-sm-9 text-right">
+                                <button id="resetButton" type="button"
+                                        class="btn-custom btn-cancel">Reset</button>
+                                <button id="submit" type="button" class="btn-custom btn-primary">Submit</button>
+                            </div>
+                        </div>
+                    </div>
+                    </form>
+
+
                 </div>
-
-                <div class="form-section">
-                    <h3 class="form-subheading">Contact Details</h3>
-                    <div class="form-group">
-                        <label class="control-label col-sm-3 is-required"
-                               for="phone-number">Mobile Number 1</label>
-                        <div class="col-sm-9">
-                            <input type="text" class="form-control  tpnumberValClass other" id="contact-1"
-                                   name="contact-1" placeholder="Mobile Number 1" maxlength="15">
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="control-label col-sm-3 "
-                               for="phone-number">Mobile Number 2</label>
-                        <div class="col-sm-9">
-                            <input type="text" class="form-control  tpnumberValClass other" id="contact-2"  name="contact-2"
-                                   placeholder="Mobile Number 2" maxlength="15">
-                        </div>
-                    </div>
-
-
-
-
-                    <div class="form-group">
-                        <label class="control-label col-sm-3 "
-                               for="landLine-number">Land Line Number</label>
-                        <div class="col-sm-9">
-                            <input type="text" class="form-control  tpnumberValClass other" id="landline"
-                                   name="landline" placeholder="Land Line Number" maxlength="15">
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="control-label col-sm-3 is-required"
-                               for="email-personal">Personal Email</label>
-                        <div class="col-sm-9">
-                            <input type="text" class="form-control other" id="email-personal" maxlength="100"
-                                   name="email-personal" placeholder="Personal Email">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label col-sm-3" for="email-college">Email</label>
-                        <div class="col-sm-9">
-                            <input type="text" class="form-control other" id="email" name="email" maxlength="100"
-                                   placeholder="Email">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label col-sm-3" for="fax">Fax</label>
-                        <div class="col-sm-9">
-                            <input type="text" class="form-control tpnumberValClass other" id="fax" name="fax" maxlength="15"
-                                   placeholder="Fax Number">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <div class="col-sm-offset-3 col-sm-9 text-right">
-                        <button id="resetButton" type="button"
-                                class="btn-custom btn-cancel">Reset</button>
-                        <button id="submit" type="button" class="btn-custom btn-primary">Submit</button>
-                    </div>
-                </div>
-            </div>
-    </form>
-
-
-</div>
-<!-- ############# /CONTENT ############# -->
-<style>
-    .activeClass{
-        background: #00ff00; 
-    }
-</style>
-<%@include file="template/main/footer.jsp"%>
-<script src="${pageContext.servletContext.contextPath}/resources/js/common-functions.js"></script>
-<script src="${pageContext.servletContext.contextPath}/resources/js/common-dropdown.js"></script>
-<script src="${pageContext.servletContext.contextPath}/resources/js/member-details-enrollment.js"></script>
-<script src="${pageContext.servletContext.contextPath}/resources/js/init.js"></script>
+                <!-- ############# /CONTENT ############# -->
+                <style>
+                    .activeClass{
+                        background: #00ff00; 
+                    }
+                </style>
+                <%@include file="template/main/footer.jsp"%>
+                <script src="${pageContext.servletContext.contextPath}/resources/js/common-functions.js"></script>
+                <script src="${pageContext.servletContext.contextPath}/resources/js/common-dropdown.js"></script>
+                <script src="${pageContext.servletContext.contextPath}/resources/js/member-details-enrollment.js"></script>
+                <script src="${pageContext.servletContext.contextPath}/resources/js/init.js"></script>
 
 
