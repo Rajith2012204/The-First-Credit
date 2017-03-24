@@ -48,4 +48,18 @@ public class NavigationController {
     public String searchGroup() {
         return "search-group";
     }
+     //##################################
+    //Member creation
+   //##################################
+    
+    @RequestMapping(value =  NavigationPath.ADMIN_PREFIX + NavigationPath.CREATE_MEMBER, method = RequestMethod.GET)
+    public String createMember() {
+        return "member-details-enrollment";
+    }
+    
+   @RequestMapping(value =  NavigationPath.ADMIN_PREFIX + NavigationPath.CREATE_MEMBER_MODIFY, method = RequestMethod.GET)
+    public String modifyMember() {
+        return "member-details-enrollment-modify";
+    }
+    
 }

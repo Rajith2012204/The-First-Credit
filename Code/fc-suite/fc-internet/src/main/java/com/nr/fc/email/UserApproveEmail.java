@@ -41,7 +41,7 @@ public class UserApproveEmail {
                 name.append(" ");
                 name.append(user.getEmployeeId().getLastName());
 
-                Employee employeeObj = employeeService.getEmployeeEmail(user.getEmployeeId().getEmployeeId());
+                Employee employeeObj = employeeService.findByEmployeeId(user.getEmployeeId().getEmployeeId());
 
                 if (null != employeeObj) {
                     email = employeeObj.getEmail();

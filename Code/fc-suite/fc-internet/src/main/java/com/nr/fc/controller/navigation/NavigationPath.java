@@ -32,5 +32,10 @@ public class NavigationPath {
     //##################################
      public static final String CREATE_GROUP = "/create-group";
      public static final String SEARCH_GROUP = "/search-group";
-
+     
+     //##################################
+    //Member creation
+    //##################################
+   public static final String CREATE_MEMBER= "/create-member";
+   public static final String CREATE_MEMBER_MODIFY= "/create-member-modify";
 }

@@ -63,7 +63,10 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public Employee findByEmployeeId(String employeeId) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String sql = "SELECT a FROm Employee a WHERE a.employeeId=:employeeId";
+        Map<String, Object> params = new HashMap<>();
+        params.put("employeeId", employeeId);
+        return employeeDao.findbyQuerySingle(sql, params);
     }
 
     @Override
@@ -84,15 +87,6 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public Employee checkLoginUserIsATeacher(String employeeRegId) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public Employee getEmployeeEmail(String employeeId) {
-
-        String sql = "SELECT a FROm Employee a WHERE a.employeeId=:employeeId";
-        Map<String, Object> params = new HashMap<>();
-        params.put("employeeId", employeeId);
-        return employeeDao.findbyQuerySingle(sql, params);
     }
 
 }

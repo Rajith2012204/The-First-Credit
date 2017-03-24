@@ -43,6 +43,8 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "ImageBank.findByAddedBy", query = "SELECT i FROM ImageBank i WHERE i.addedBy = :addedBy"),
     @NamedQuery(name = "ImageBank.findByAddedDate", query = "SELECT i FROM ImageBank i WHERE i.addedDate = :addedDate")})
 public class ImageBank implements Serializable {
+    @OneToMany(mappedBy = "imageId")
+    private List<Customer> customerList;
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
@@ -97,14 +99,14 @@ public class ImageBank implements Serializable {
         this.imageId = imageId;
     }
 
-    public ImageBank(String imageId, String imagePath, String status, Date modifiedDate, String modifiedBy, String addedBy, Date addedDate) {
+    public ImageBank(String imageId, String imagePath, String status, Date date, String username) {
         this.imageId = imageId;
         this.imagePath = imagePath;
         this.status = status;
-        this.modifiedDate = modifiedDate;
-        this.modifiedBy = modifiedBy;
-        this.addedBy = addedBy;
-        this.addedDate = addedDate;
+        this.modifiedDate = date;
+        this.modifiedBy = username;
+        this.addedBy = username;
+        this.addedDate = date;
     }
 
     public String getImageId() {
@@ -211,6 +213,15 @@ public class ImageBank implements Serializable {
     @Override
     public String toString() {
         return "com.nr.fc.model.ImageBank[ imageId=" + imageId + " ]";
+    }
+
+    @XmlTransient
+    public List<Customer> getCustomerList() {
+        return customerList;
+    }
+
+    public void setCustomerList(List<Customer> customerList) {
+        this.customerList = customerList;
     }
     
 }

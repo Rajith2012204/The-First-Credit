@@ -23,5 +23,11 @@ public class ServicePath {
     public static final String USER_APPROVAL = "/user-approve";
 
     public static final String USER_RESTRICTION = "/user-restriction";
-
+    
+    
+//============================== Group Management ======================================
+  public static final String CREATE_GROUP = "/create-group";
+  
+//============================== Customer Management ======================================
+   public static final String CREATE_CUSTOMER = "/create-customer";
 }

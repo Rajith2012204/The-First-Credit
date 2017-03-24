@@ -8,7 +8,6 @@ package com.nr.fc.service.employee;
 import com.nr.fc.criteria.EmployeeCriteria;
 import java.util.List;
 
-import com.nr.fc.json.objects.Contact;
 import com.nr.fc.model.Employee;
 
 /**
@@ -142,11 +141,5 @@ public interface EmployeeService {
      */
     public Employee checkLoginUserIsATeacher(String employeeRegId);
 
-    /**
-     *
-     * @param employeeId
-     * @return
-     */
-    public Employee getEmployeeEmail(String employeeId);
 
 }

@@ -121,11 +121,16 @@
             </div>
             <div class="col-sm-6">
                 <div class="form-section">
-                    <h3 class="form-subheading">Groups</h3>
+                    <h3 class="form-subheading">Add members</h3>
                     <div class="form-group">
+                        <div class="col-sm-offset-3 col-sm-9 text-right">
+                            <button id="addmember" type="button" class="btn-custom btn-primary">Add Group Member</button>
+                        </div>
+                    </div>
+                    <div class="form-group">           
                         <div class="col-sm-12">
                             <div class="wr-bootstrap-table activity-table">
-                                <table id="country-table" class="form-table"></table>
+                                <table id="member-table" class="form-table"></table>
                             </div>
                         </div>
                     </div>
@@ -139,3 +144,11 @@
 <!-- ############# /CONTENT ############# -->
 <%@include file="template/main/footer.jsp" %>
 <script src="${pageContext.servletContext.contextPath}/resources/js/init.js"></script>
+<script src="${pageContext.servletContext.contextPath}/resources/js/common-functions.js"></script>
+<script src="${pageContext.servletContext.contextPath}/resources/js/create-group.js"></script>
+
+<script>
+    $("#addmember").click(function () {
+        window.location.href = '<%=request.getContextPath()%>/admin/create-member';
+    });
+</script>
