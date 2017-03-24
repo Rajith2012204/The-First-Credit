@@ -1,5 +1,5 @@
 //################### Global Variable ###############################################
-var customerSaveUrl="create-customer/save";
+var customerSaveUrl = "create-customer/save";
 
 var title;
 var status;
@@ -42,7 +42,7 @@ var token = $("#txtSecurityToken").val();
 
 // ################### Data ###############################################
 function getData() {
-  
+
     identityType = $("#id-type").val();
     title = $("#title").val();
     chkStatus = $("#is-active").is(':checked'); // true
@@ -56,17 +56,17 @@ function getData() {
         gender = "female";
     }
     dob = $("#dob").val();
-    
+
 
     personalAddressOne = $("#personal-add1").val();
     personalAddressTwo = $("#personal-add2").val();
     personalAddressCity = $("#personal-city").val();
     personalAddressProvince = $("#personal-province").val();
-    
-    occupation= $("#occupation").val();
-    noFamily= $("#no-family").val();
-    noDependents= $("#no-dependents").val();
-    issuedCountry= $("#issued-country").val();
+
+    occupation = $("#occupation").val();
+    noFamily = $("#no-family").val();
+    noDependents = $("#no-dependents").val();
+    issuedCountry = $("#issued-country").val();
 
     mobileNoOne = $("#contact-1").val();
     mobileNoTwo = $("#contact-2").val();
@@ -162,7 +162,7 @@ $(document).ready(
                 async: false,
             });
 
-            
+
             $('.file-drop-zone').css({
                 "height": "300"
             });
@@ -256,10 +256,10 @@ $(".contact").change(function () {
 });
 
 $("#submit").click(function () {
-  //  if (isValidStudent()) {
-        showMemberSaveconfirmation();
+    //  if (isValidStudent()) {
+    showMemberSaveconfirmation();
     //} else {
-      //  focusInvalid();
+    //  focusInvalid();
     //}
 });
 
@@ -368,11 +368,11 @@ function showMemberSaveconfirmation() {
     });
 }
 
-function showSaveMsg(studentId) {
+function showSaveMsg(memberId) {
 
     dialogInstance = new BootstrapDialog();
     dialogInstance.setTitle('Save Message');
-    dialogInstance.setMessage("Entry saved!, Student Id is " + studentId);
+    dialogInstance.setMessage("Entry saved!, Customer Id is " + memberId);
     dialogInstance.setType(BootstrapDialog.TYPE_SUCCESS);
     dialogInstance.open();
 
@@ -380,7 +380,7 @@ function showSaveMsg(studentId) {
         showHeadings(studentId);
         dialogInstance.close();
         imageLoaded = false;
-        window.location.href = "member-details-enrollment-modify?customerId=" +studentId;
+        window.location.href = "member-details-enrollment-modify?customerId=" + studentId;
     }, 3000);
 
 }
