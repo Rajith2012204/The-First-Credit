@@ -5,7 +5,9 @@
  */
 package com.nr.fc.controller;
 
+import com.nr.fc.controller.util.GroupJsonUtil;
 import com.nr.fc.exception.BussinessException;
+import com.nr.fc.json.model.GroupJson;
 import com.nr.fc.json.model.JsonReturn;
 import com.nr.fc.model.CustomerGroup;
 import com.nr.fc.model.Employee;
@@ -34,6 +36,8 @@ public class GroupController {
     private CustomerGroupService customerGroupService;
     @Autowired
     private EmployeeService employeeService;
+    @Autowired
+    private GroupJsonUtil groupJsonUtil;
 
     private static final Logger LOGGER = LoggerFactory.getLogger(GroupController.class);
 
@@ -79,8 +83,8 @@ public class GroupController {
             customerGroupService.Save(customerGroupObj);
 
             jsonReturn.setSuccess("true");
-            jsonReturn.setResult(customerGroupObj.getGroupName());
-
+            jsonReturn.setResult(customerGroupObj.getGroupId());
+   
         } catch (BussinessException e) {
             jsonReturn.setSuccess("false");
             jsonReturn.setErrorMessage(e.getMsg());
@@ -94,6 +98,16 @@ public class GroupController {
             e.printStackTrace();
         }
         return jsonReturn;
+    }
+
+    @RequestMapping(value = "/find/groupId", method = RequestMethod.GET, headers = "Accept=application/json")
+    @ResponseBody
+    public GroupJson findByGroupId(@RequestParam(value = "groupId", required = true) String groupId) {
+
+        CustomerGroup customerGroup = customerGroupService.findByGroupId(groupId);
+
+        return groupJsonUtil.toJson(customerGroup);
+
     }
 
 }
