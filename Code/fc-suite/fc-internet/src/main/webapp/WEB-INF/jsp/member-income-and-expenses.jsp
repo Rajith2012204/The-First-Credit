@@ -9,7 +9,7 @@
 
 <!-- ############# PAGE TITLE ############# -->
 <script>
-    document.title = "First Credit - Customer Prpfile Form";
+    document.title = "First Credit - Income and Expences Form";
 </script>
 
 <!-- ############# CONTENT ############# -->
