@@ -103,4 +103,12 @@ public class CustomerServiceImpl implements CustomerService {
         customerDao.create(customer);
     }
 
+    @Override
+    public Customer findByCustomerId(String customerId) {
+        String sql = "SELECT c FROM Customer c WHERE c.customerId = :customerId";
+        Map<String, Object> params = new HashMap<>();
+        params.put("customerId", customerId);
+        return customerDao.findbyQuerySingle(sql, params);
+    }
+
 }

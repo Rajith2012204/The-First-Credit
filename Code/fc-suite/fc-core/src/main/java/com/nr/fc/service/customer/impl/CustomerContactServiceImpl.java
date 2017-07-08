@@ -9,6 +9,9 @@ import com.nr.fc.dao.CustomerContactDao;
 import com.nr.fc.model.CustomerContact;
 import com.nr.fc.model.CustomerContactPK;
 import com.nr.fc.service.customer.CustomerContactService;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -33,6 +36,14 @@ public class CustomerContactServiceImpl implements CustomerContactService {
     @Override
     public CustomerContact findByPk(CustomerContactPK customerContactPK) {
         return customerContactDao.read(customerContactPK);
+    }
+
+    @Override
+    public List<CustomerContact> findByCustomerId(String customerId) {
+        String sql = "SELECT c FROM CustomerContact c WHERE c.customerContactPK.customerId = :customerId";
+        Map<String, Object> params = new HashMap<>();
+        params.put("customerId", customerId);
+        return customerContactDao.findbyQuery(sql, params);
     }
 
 }
