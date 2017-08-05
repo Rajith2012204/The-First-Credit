@@ -78,4 +78,23 @@ public class CustomerGroupServiceImpl implements CustomerGroupService {
         return customerGroupDao.findbyQuerySingle(sql, params);
     }
 
+    @Override
+    public List<CustomerGroup> findAllGroups() {
+        
+        return customerGroupDao.findAll();
+    }
+    /**
+     * 
+     * @param customerGroupObj 
+     */
+    @Override
+    @Transactional
+    public void update(CustomerGroup customerGroupObj) {
+        
+        
+        customerGroupObj.setModifiedDate(new Date());
+        customerGroupObj.setModifiedBy(customerGroupObj.getAddedBy());
+        customerGroupDao.update(customerGroupObj);
+    }
+
 }

@@ -6,6 +6,7 @@
 package com.nr.fc.service.customergroup;
 
 import com.nr.fc.model.CustomerGroup;
+import java.util.List;
 
 /**
  *
@@ -31,5 +32,16 @@ public interface CustomerGroupService {
      * @return
      */
     public String getLastGroupID();
+    
+    
+   /**
+    * 
+    * @return 
+    */
+    public List<CustomerGroup> findAllGroups();
+    
+    
+    
+   public void update(CustomerGroup customerGroupObj);
 
 }

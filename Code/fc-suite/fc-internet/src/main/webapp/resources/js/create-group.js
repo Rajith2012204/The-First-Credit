@@ -2,8 +2,8 @@
 // VARIABLES
 // #############################
 var saveUrl = "create-group/save";
-var readUrl = "create-group/find/groupId";
-var updateUrl = "country/update";
+var readUrl = "create-group/find/groups";
+var updateUrl = "create-group/update";
 
 var token = $("#txtSecurityToken").val();
 var username = $("#txtUserName").val();
@@ -18,9 +18,9 @@ var addBtn = $("#add");
 //document.title = "MISY Myanmar International School - Country Form";
 
 function initTable() {
-    table = $('#member-table').bootstrapTable({
+    table = $('#group-table').bootstrapTable({
         method: 'get',
-        url: '',
+        url: readUrl,
         cache: false,
         height: 350,
         striped: true,
@@ -32,8 +32,8 @@ function initTable() {
         minimumCountColumns: 2,
         clickToSelect: true,
         columns: [{
-                field: 'memberName',
-                title: 'Member Name',
+                field: 'groupName',
+                title: 'Group Name',
                 align: 'left',
                 valign: 'bottom',
                 sortable: true
@@ -44,8 +44,16 @@ function initTable() {
                 valign: 'bottom',
                 sortable: true
             }, {
+                field: 'addmember',
+                title: 'Add Member',
+                align: 'left',
+                valign: 'bottom',
+                sortable: true,
+                formatter: operateFormatterAction,
+                events: operateEventAddmemeber
+            },{
                 field: 'action',
-                title: 'Edit',
+                title: 'Edit Group',
                 align: 'left',
                 valign: 'bottom',
                 sortable: true,
@@ -72,7 +80,7 @@ $(document).ready(function () {
     //intilizing table
     initTable();
     //common-dropdown functions
-    //loadData();
+    loadData();
 });
 
 //#############################
@@ -102,7 +110,7 @@ function getData() {
         }, {
             title: "Group Address",
             colomn: "groupAddress",
-            value: $("#meeting-day").val()
+            value: $("#group-address").val()
         }, {
             title: "Contact Number",
             colomn: "contactNumber",
@@ -123,6 +131,62 @@ function getData() {
     return allData;
 
 }
+
+
+//#############################
+//GETTER & SETTER
+//#############################
+function getUpdateData() {
+    allData = [{
+            title: "",
+            colomn: "groupId",
+            value: $("#group-id").val()
+        },{
+            title: "Group Name",
+            colomn: "groupName",
+            value: $("#group-name").val()
+        }, {
+            title: "Date of Establishment",
+            colomn: "establishment",
+            value: $("#establishment").val()
+        }, {
+            title: "Group Officer",
+            colomn: "groupOfficer",
+            value: $("#group-officer").val()
+        }, {
+            title: "Meeting Day",
+            colomn: "meetingDay",
+            value: $("#meeting-day").val()
+        }, {
+            title: "Group Branch",
+            colomn: "groupBranch",
+            value: $("#group-Branch").val()
+        }, {
+            title: "Group Address",
+            colomn: "groupAddress",
+            value: $("#group-address").val()
+        }, {
+            title: "Contact Number",
+            colomn: "contactNumber",
+            value: $("#group-contact-number").val()
+        }, {
+            title: "",
+            colomn: "details",
+            value: $("#details").val()
+        }, {
+            title: "Status",
+            colomn: "status",
+            value: $("#status").val()
+        }, {
+            title: "",
+            colomn: "username",
+            value: username
+        }];
+    return allData;
+
+}
+
+
 
 //#############################
 //EVENTS
@@ -154,6 +218,7 @@ function validateForm(msg) {
 
 clearBtn.click(function () {
     //validator.resetForm();  
+    $('#add').html('Save');
 });
 
 //#############################
@@ -179,8 +244,14 @@ function generateViewData(data) {
 
 function showSaveconfirmation(msg) {
     //get current data to save
-    var gatheredData = getData();
-
+    
+    if (msg == "Add") {
+     //saves new 
+     var gatheredData = getData();
+    }else{
+        
+     var gatheredData = getUpdateData();
+    }
     BootstrapDialog.show({
         title: 'Save Confirmation',
         //automatically generating view data
@@ -224,9 +295,7 @@ function showSaveMsg(Id) {
 
     setTimeout(function () {
         dialogInstance.close();
-        var data = ajaxLoadData(readUrl, "GET", Id);
-        console.log(data);
-        setGroupData(data);
+        loadData();
     }, 3000);
 }
 
@@ -280,6 +349,25 @@ function ajaxLoadData(url, type, groupId) {
     return	returnData;
 }
 
+function ajaxData(url, type) {
+    var returnData = null;
+    $.ajax({
+        type: type,
+        url: url,
+        async: false,
+        headers: {
+            'X-CSRF-TOKEN': token
+        },
+        success: function (data) {
+            returnData = data;
+        },
+        error: function () {
+            alert("Failed to load ");
+        }
+    });
+    return	returnData;
+}
+
 //#############################
 //Other Events
 //#############################
@@ -291,30 +379,47 @@ function operateFormatter(value, row, index) {
     ].join('');
 }
 
+function operateFormatterAction(value, row, index) {
+    return [
+        '<a class="addmemeber ml10" href="javascript:void(0)" title="addmemeber">',
+        '<i class="glyphicon glyphicon-user"></i>',
+        '</a>'
+    ].join('');
+}
+
+
 window.operateEvents = {
     'click .edit': function (e, value, row, index) {
         clearBtn.click();
-        $("#province").val(row.provinceId);
-        $("#country").val(row.countryId);
+        $("#group-id").val(row.groupId);
+        $("#group-name").val(row.groupName);
+        $("#establishment").val(row.dateOfEstablishment);
+        $("#group-officer").val(row.employeeName);
+        $("#meeting-day").val(row.meetingDate);
+        $("#group-Branch").val(row.branch);
+        $("#group-contact-number").val(row.contact);
         $("#details").val(row.description);
         $("#status").val(row.status);
-        $('#country').attr('disabled', 'true');
-        $('#province').attr('disabled', 'true');
+        $("#group-address").val(row.address);
         $('#add').html('Update');
     }
 };
 
-function setGroupData(data) {
 
-    $("#group-name").val(data.groupName);
-    $("#establishment").val(data.dateOfEstablishment);
-    $("#group-officer").val(data.employeeName);
-    $("#meeting-day").val(data.meetingDate);
-    $("#group-Branch").val(data.branch);
-    $("#group-contact-number").val(data.contact);
-    $("#details").val(data.description);
-    $("#status").val(data.status);
+window.operateEventAddmemeber = {
+    'click .addmemeber': function (e, value, row, index) {
+        console.log("clicked",row);
+        window.location.href = "create-member?groupId=" + row.groupId;
+    }
+};
+
+
+
+function loadData() {
+   
+    //Loads from database
+    data = ajaxData(readUrl, "GET", token);
+    //Loading database data to bootstrap table
+    table.bootstrapTable('load', data);
 
 }
-
-
