@@ -8,6 +8,8 @@ package com.nr.fc.controller.util;
 import com.nr.fc.json.model.GroupJson;
 import com.nr.fc.model.CustomerGroup;
 import com.nr.fc.util.DateUtil;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.stereotype.Component;
 
@@ -37,6 +39,37 @@ public class GroupJsonUtil {
         groupJson.setStatus(group.getStatus());
 
         return groupJson;
+    }
+    
+    
+    
+    public List<GroupJson> toJson(List<CustomerGroup> group) {
+
+       List<GroupJson> GroupJsonList=new  ArrayList<>();
+       
+        for (CustomerGroup customerGroup : group) {
+            
+            
+        GroupJson groupJson = new GroupJson();
+        groupJson.setGroupId(customerGroup.getGroupId());
+        groupJson.setGroupName(customerGroup.getGroupName());
+        groupJson.setDateOfEstablishment(DateUtil.dateToString(customerGroup.getDateOfEstablishment(), DateUtil.Formats.DEFAULTDATE));
+        groupJson.setEmployeeName(customerGroup.getEmployee().getFirstName());
+        groupJson.setMeetingDate(DateUtil.dateToString(customerGroup.getMeetingDate(), DateUtil.Formats.DEFAULTDATE));
+        groupJson.setBranch(customerGroup.getBranch());
+        groupJson.setAddress(customerGroup.getPrimaryAddress());
+        groupJson.setContact(customerGroup.getPrimaryContact());
+        groupJson.setDescription(customerGroup.getDescription());
+        groupJson.setStatus(customerGroup.getStatus());
+        
+        GroupJsonList.add(groupJson);
+        
+        
+       }
+   
+       
+
+        return GroupJsonList;
     }
 
 }

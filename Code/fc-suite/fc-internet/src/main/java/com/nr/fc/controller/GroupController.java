@@ -15,6 +15,7 @@ import com.nr.fc.service.customergroup.CustomerGroupService;
 import com.nr.fc.service.employee.EmployeeService;
 import com.nr.fc.util.DateUtil;
 import com.nr.fc.util.DateUtil.Formats;
+import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -99,12 +100,83 @@ public class GroupController {
         }
         return jsonReturn;
     }
-
-    @RequestMapping(value = "/find/groupId", method = RequestMethod.GET, headers = "Accept=application/json")
+    
+    
+    @RequestMapping(value = "/update", method = RequestMethod.POST, headers = "Accept=application/json")
     @ResponseBody
-    public GroupJson findByGroupId(@RequestParam(value = "groupId", required = true) String groupId) {
+    public JsonReturn update(
+            @RequestParam(value = "groupId", required = true) String groupId,
+            @RequestParam(value = "groupName", required = true) String groupName,
+            @RequestParam(value = "establishment", required = true) String establishment,
+            @RequestParam(value = "groupOfficer", required = true) String groupOfficerId,
+            @RequestParam(value = "meetingDay", required = true) String meetingDay,
+            @RequestParam(value = "groupBranch", required = true) String groupBranch,
+            @RequestParam(value = "groupAddress", required = true) String groupAddress,
+            @RequestParam(value = "contactNumber", required = true) String contactNumber,
+            @RequestParam(value = "details", required = true) String details,
+            @RequestParam(value = "status", required = true) String status,
+            @RequestParam(value = "username", required = true) String username) {
 
-        CustomerGroup customerGroup = customerGroupService.findByGroupId(groupId);
+        JsonReturn jsonReturn = new JsonReturn();
+       
+
+        try {
+            
+           CustomerGroup object= customerGroupService.findByGroupId(groupId);
+            
+            if(null!=object){
+                
+            object.setDateOfEstablishment(DateUtil.stringToDate(establishment, Formats.DEFAULTDATE));
+
+            Employee employee = employeeService.findByEmployeeId(groupOfficerId);
+
+            if (null != employee) {
+
+                object.setEmployee(employee);
+
+            } else {
+                throw new BussinessException("Employee Does Not Exist !");
+            }
+
+            object.setMeetingDate(DateUtil.stringToDate(meetingDay, Formats.DEFAULTDATE));
+            object.setBranch(groupBranch);
+            object.setPrimaryAddress(groupAddress);
+            object.setPrimaryContact(contactNumber);
+            object.setDescription(details);
+            object.setStatus(status);
+        
+            customerGroupService.update(object);
+            jsonReturn.setSuccess("true");
+            jsonReturn.setResult(object.getGroupId());
+            
+            }else{
+                
+                 throw new BussinessException("Group Does Not Exist !");
+            }
+
+        } catch (BussinessException e) {
+            jsonReturn.setSuccess("false");
+            jsonReturn.setErrorMessage(e.getMsg());
+            jsonReturn.setErrorCode("123");
+            e.printStackTrace();
+        } catch (Exception e) {
+            jsonReturn.setSuccess("false");
+            jsonReturn.setErrorMessage(e.getMessage());
+            jsonReturn.setErrorCode("123");
+            LOGGER.error("Exception Occured", e);
+            e.printStackTrace();
+        }
+        return jsonReturn;
+    }
+    
+    
+    
+
+    @RequestMapping(value = "/find/groups", method = RequestMethod.GET, headers = "Accept=application/json")
+    @ResponseBody
+    public List<GroupJson> findByGroupId() {
+
+        List<CustomerGroup> customerGroup = customerGroupService.findAllGroups();
 
         return groupJsonUtil.toJson(customerGroup);
 

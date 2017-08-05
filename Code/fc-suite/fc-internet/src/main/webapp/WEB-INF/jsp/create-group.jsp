@@ -26,6 +26,12 @@
                 <div class="form-section">
                     <h3 class="form-subheading">Group Details</h3>
 
+                    <div class="form-group" hidden="true">
+                        <div class="col-sm-10 col-md-9">
+                            <input type="text" class="form-control other"
+                                   id="group-id" name="group-id">
+                        </div>
+                    </div>
                     <div class="form-group">
                         <label class="control-label col-sm-2 col-md-3 is-required" for="group">Name of the group</label>
                         <div class="col-sm-10 col-md-9">
@@ -121,16 +127,11 @@
             </div>
             <div class="col-sm-6">
                 <div class="form-section">
-                    <h3 class="form-subheading">Add members</h3>
-                    <div class="form-group">
-                        <div class="col-sm-offset-3 col-sm-9 text-right">
-                            <button id="addmember" type="button" class="btn-custom btn-primary">Add Group Member</button>
-                        </div>
-                    </div>
+                    <h3 class="form-subheading">Groups</h3>
                     <div class="form-group">           
                         <div class="col-sm-12">
                             <div class="wr-bootstrap-table activity-table">
-                                <table id="member-table" class="form-table"></table>
+                                <table id="group-table" class="form-table"></table>
                             </div>
                         </div>
                     </div>
