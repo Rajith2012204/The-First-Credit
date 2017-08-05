@@ -39,6 +39,22 @@ var fax;
 
 var imageLoaded = false;
 var token = $("#txtSecurityToken").val();
+//############################# LOADINGS #############################
+
+$(document).ready(function () {
+   
+    initRef();
+
+
+});
+
+function initRef() {
+   
+    document.getElementById("details-enrollment").setAttribute("href", "member-details-enrollment-modify?studentId=" + $("#ref-no").val());
+    document.getElementById("bussiness-details").setAttribute("href", "create-member-business-details?studentId=" + $("#ref-no").val());
+    document.getElementById("income-and-expenses").setAttribute("href", "student-activity-enrollment?studentId=" + $("#ref-no").val());
+    document.getElementById("guarantor-profile").setAttribute("href", "student-activity-enrollment?studentId=" + $("#ref-no").val());
+}
 
 // ################### Data ###############################################
 function getData() {
@@ -390,8 +406,8 @@ function showHeadings(memberId) {
 
     $("#ref-no").val(memberId);
     document.getElementById("modal").removeAttribute("hidden");
-    document.getElementById("details-enrollment").setAttribute("href", "student-details-enrollment-modify?studentId=" + $("#ref-no").val());
-    document.getElementById("bussiness-details").setAttribute("href", "student-qualification-enrollment?studentId=" + $("#ref-no").val());
+    document.getElementById("details-enrollment").setAttribute("href", "member-details-enrollment-modify?studentId=" + $("#ref-no").val());
+    document.getElementById("bussiness-details").setAttribute("href", "create-member-business-details?studentId=" + $("#ref-no").val());
     document.getElementById("income-and-expenses").setAttribute("href", "student-activity-enrollment?studentId=" + $("#ref-no").val());
     document.getElementById("guarantor-profile").setAttribute("href", "student-activity-enrollment?studentId=" + $("#ref-no").val());
 }

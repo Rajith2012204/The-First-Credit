@@ -77,40 +77,7 @@ $(document).ready(function () {
     $('.active').removeClass('active');
     $("#student-menu").addClass("active");
     $("#sourceTxt").hide();
-    setCourseList("#program");
-    setNationalistyList("#nationality");
-    setReligionList("#religion");
-    setLanguageList("#language1");
-    setLanguageList("#language2");
-    setInstituteList("#previous-school");
-    setStudentCategoryList("#category");
-    
-     setStudentHouses("#student-house");
-
-    setCountryListAndOthers("#personal-country", true, "#personal-province", "#personal-city");
-    setCountryListAndOthers("#postal-country", true, "#postal-province", "#postal-city");
-
-    $('.file-drop-zone').css({
-        "height": "300"
-    });
-
-    $('.file-drop-zone-title').css({
-        "font-size": "20px"
-    });
-
-    //show postal address field if it is different from personal address
-    $("#postal-address-form").hide();
-
-    $("#is-postal").change(function () {
-        if ($("#is-postal").is(':checked')) {
-            $("#postal-address-form").hide();
-        } else {
-            $("#postal-address-form").show();
-
-            $('#form-student-details').find('.postalAdd').removeClass('ignore');
-            $('#form-student-details').find('.other').addClass('ignore');
-        }
-    });
+   
 
     //get lead id from url
     custormerId = getUrlVars()["customerId"];
