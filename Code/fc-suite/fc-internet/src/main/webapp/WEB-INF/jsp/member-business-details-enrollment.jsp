@@ -38,8 +38,6 @@
         <div class="row">
             <div class="col-sm-6">
                 <div class="form-section">
-                    <!--                    <h3 class="form-subheading">Personal Details</h3>-->
-
                     <div class="form-group">
                         <label class="control-label col-sm-2 col-md-3 is-required "
                                for="first-name">Ownership Type</label>

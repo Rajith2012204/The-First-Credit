@@ -178,20 +178,10 @@
                                maxlength="30">
                     </div>
                 </div>
-
-                <!--                <div class="form-group">
-                                    <label class="control-label col-sm-2 col-md-3"
-                                           for="last-name">Profile Image</label>
-                                    <div class="col-sm-10 col-md-9">
-                                        <input id="input-id" type="file" name="files[]" class="uploadFile file" accept="image/*"
-                                               data-preview-file-type="text" data-show-upload="false" data-show-remove="true">
-                                    </div>
-                                </div>-->
-
-            </div>
-        </div>
-        <div class="col-sm-6">
-            <div class="form-section">
+                
+                 </div>
+                
+                <div class="form-section">
                 <h3 class="form-subheading">Address Details</h3>
                 <div class="form-group">
                     <label class="control-label col-sm-3 is-required" for="add1">Street
@@ -227,7 +217,7 @@
                 </div>
             </div>
 
-            <div class="form-section">
+              <div class="form-section">
                 <h3 class="form-subheading">Contact Details</h3>
                 <div class="form-group">
                     <label class="control-label col-sm-3 is-required"
@@ -282,7 +272,7 @@
                     </div>
                 </div>
             </div>
-
+            
             <div class="form-group">
                 <div class="col-sm-offset-3 col-sm-9 text-right">
                     <button id="resetButton" type="button"
@@ -290,6 +280,19 @@
                     <button id="submit" type="button" class="btn-custom btn-primary">Submit</button>
                 </div>
             </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="form-section">
+                    <h3 class="form-subheading">Members details</h3>
+                    
+                    <div class="form-group">           
+                        <div class="col-sm-12">
+                            <div class="wr-bootstrap-table activity-table">
+                                <table id="member-table" class="form-table"></table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
         </div>
 </form>
 
@@ -304,7 +307,8 @@
 <%@include file="template/main/footer.jsp"%>
 <script src="${pageContext.servletContext.contextPath}/resources/js/common-functions.js"></script>
 <script src="${pageContext.servletContext.contextPath}/resources/js/common-dropdown.js"></script>
-<script src="${pageContext.servletContext.contextPath}/resources/js/member-details-enrollment.js"></script>
 <script src="${pageContext.servletContext.contextPath}/resources/js/init.js"></script>
+<script src="${pageContext.servletContext.contextPath}/resources/js/member-details-enrollment.js"></script>
+
 
 

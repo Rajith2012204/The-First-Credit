@@ -3,7 +3,6 @@ var customerSaveUrl = "create-customer/save";
 
 var title;
 var status;
-
 var firstName;
 var middleName;
 var lastName;
@@ -18,17 +17,13 @@ var occupation;
 var noFamily;
 var noDependents;
 var issuedCountry;
-
 var dialogInstance;
-
 var personalAddressOne;
 var personalAddressTwo;
 var personalAddressCountry;
 var personalAddressProvince;
 var personalAddressCity;
-
 var username;
-
 var fileUpload;
 var mobileNoOne;
 var mobileNoTwo;
@@ -39,13 +34,53 @@ var fax;
 
 var imageLoaded = false;
 var token = $("#txtSecurityToken").val();
+//#############################
+//INITIALIZATION
+//#############################
+function initTable() {
+    table = $('#member-table').bootstrapTable({
+        method: 'get',
+        url: '',
+        cache: false,
+        height: 350,
+        striped: true,
+        pagination: true,
+        search: true,
+        showColumns: true,
+        pageSize: 50,
+        pageList: [10, 25, 50, 100, 200],
+        minimumCountColumns: 2,
+        clickToSelect: true,
+        columns: [{
+                field: 'memberName',
+                title: 'Member Name',
+                align: 'left',
+                valign: 'bottom',
+                sortable: true
+            }, {
+                field: 'status',
+                title: 'Status',
+                align: 'left',
+                valign: 'bottom',
+                sortable: true
+            }, {
+                field: 'action',
+                title: 'Edit',
+                align: 'left',
+                valign: 'bottom',
+                sortable: true,
+                formatter: operateFormatter,
+                events: operateEvents
+            }]
+    });
+}
+
+
+
 //############################# LOADINGS #############################
-
-$(document).ready(function () {
-   
+$(document).ready(function () {   
     initRef();
-
-
+    initTable();
 });
 
 function initRef() {
@@ -188,6 +223,30 @@ $(document).ready(
             });
 
         });
+
+
+
+//Other Events
+function operateFormatter(value, row, index) {
+    return [
+        '<a class="edit ml10" href="javascript:void(0)" title="Edit">',
+        '<i class="glyphicon glyphicon-pencil"></i>',
+        '</a>'
+    ].join('');
+}
+
+window.operateEvents = {
+    'click .edit': function (e, value, row, index) {
+//        clearBtn.click();
+//        $("#province").val(row.provinceId);
+//        $("#country").val(row.countryId);
+//        $("#details").val(row.description);
+//        $("#status").val(row.status);
+//        $('#country').attr('disabled', 'true');
+//        $('#province').attr('disabled', 'true');
+//        $('#add').html('Update');
+    }
+};
 
 // ################### EVENTS ###############################################
 
