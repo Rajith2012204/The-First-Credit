@@ -14,19 +14,13 @@
 
 <!-- ############# CONTENT ############# -->
 <div class="content">
-    <div id="modal" class="row" hidden="true">
+    <div id="modal" class="row" hidden="false">
         <div class="col-sm-12">
             <ul id="section-nav">
 
                 <li class="current" ><a id="details-enrollment" href="#">Details</a></li>
-
-
                 <li><a id="bussiness-details" href="#">Business Details</a></li>
-
-
                 <li><a id="income-and-expenses" href="#">Income and Expenses</a></li>
-
-
                 <li><a id="guarantor-profile" href="#">
                         Guarantor Profile</a></li>              
             </ul>
