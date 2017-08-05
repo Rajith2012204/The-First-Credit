@@ -34,4 +34,11 @@ public interface CustomerService {
      */
     public void save(Customer customer);
 
+    /**
+     *
+     * @param customerId
+     * @return 
+     */
+    public Customer findByCustomerId(String customerId);
+
 }

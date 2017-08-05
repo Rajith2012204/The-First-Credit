@@ -6,8 +6,10 @@
 package com.nr.fc.controller.customer;
 
 import com.nr.fc.controller.ServicePath;
+import com.nr.fc.controller.util.CustomerJsonUtil;
 import com.nr.fc.enums.GeneralStatus;
 import com.nr.fc.exception.BussinessException;
+import com.nr.fc.json.model.CustomerJson;
 import com.nr.fc.json.model.JsonReturn;
 import com.nr.fc.json.objects.Contact;
 import com.nr.fc.model.Customer;
@@ -34,9 +36,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 @RequestMapping(value = ServicePath.ADMIN_PREFIX + ServicePath.CREATE_CUSTOMER)
 public class CustomerController {
-    
+
     @Autowired
     private CustomerService customerService;
+
+    @Autowired
+    private CustomerJsonUtil customerJsonUtil;
 
     private static final Logger LOGGER = LoggerFactory.getLogger(CustomerController.class);
 
@@ -78,7 +83,7 @@ public class CustomerController {
             customer.setMiddleName(txtMiddleName);
             customer.setLastName(txtLastName);
             customer.setDateOfBirth(DateUtil.stringToDate(txtDob, DateUtil.Formats.DEFAULTDATE));
-            
+
             customer.setIdType(idType);
             customer.setCustomerIdentificationNo(nationalID);
             customer.setIssudeCountry(issuedCountry);
@@ -92,21 +97,19 @@ public class CustomerController {
             customer.setProvince(sltPersonalProvince);
 
             customer.setStatus(chkActive);
-            
-             // setting gender
+
+            // setting gender
             if (sltGender.equalsIgnoreCase("male")) {
                 customer.setGender("1");
             } else if (sltGender.equalsIgnoreCase("female")) {
                 customer.setGender("0");
             }
-            
-             // student picture
+
+            // student picture
             if (!StringUtils.isEmpty(fileUpload)) {
                 customer.setImageId(new ImageBank("", fileUpload, GeneralStatus.ACTIVE.toString(), new Date(), username));
             }
-            
-            
-            
+
             // Setting Contacts
             if (!StringUtils.isEmpty(phoneNoOne)) {
                 contactList.add(new Contact("", "Primary", "Telephone", phoneNoOne));
@@ -126,7 +129,7 @@ public class CustomerController {
             if (!StringUtils.isEmpty(fax)) {
                 contactList.add(new Contact("", "Normal", "Fax", fax));
             }
-            
+
             customerService.saveNew(customer, contactList, username);
 
             jsonReturn.setSuccess("true");
@@ -145,6 +148,16 @@ public class CustomerController {
             e.printStackTrace();
         }
         return jsonReturn;
+    }
+
+    @RequestMapping(value = "/find/custormerId", method = RequestMethod.GET, headers = "Accept=application/json")
+    @ResponseBody
+    public CustomerJson findByCustomerId(@RequestParam(value = "custormerId", required = true) String custormerId) {
+
+        Customer customer = customerService.findByCustomerId(custormerId);
+
+        return customerJsonUtil.toJson(customer);
+
     }
 
 }

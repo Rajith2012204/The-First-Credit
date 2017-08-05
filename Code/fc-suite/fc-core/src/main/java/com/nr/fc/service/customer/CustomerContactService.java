@@ -2,6 +2,7 @@ package com.nr.fc.service.customer;
 
 import com.nr.fc.model.CustomerContact;
 import com.nr.fc.model.CustomerContactPK;
+import java.util.List;
 
 /**
  *
@@ -21,5 +22,12 @@ public interface CustomerContactService {
      * @return
      */
     public CustomerContact findByPk(CustomerContactPK customerContactPK);
+
+    /**
+     *
+     * @param customerId
+     * @return
+     */
+    public List<CustomerContact> findByCustomerId(String customerId);
 
 }

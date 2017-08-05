@@ -1,51 +1,41 @@
+<%-- 
+    Document   : member-details-enrollment
+    Created on : Feb 20, 2017, 12:35:24 AM
+    Author     : Naveen
+--%>
+
 <!--########################## Main Header ###########################-->
 <%@include file="template/main/header.jsp"%>
 
 <!-- ############# PAGE TITLE ############# -->
 <script>
-    document.title = "MISY Myanmar International School - Student Details Form";
+    document.title = "First Credit - Member Registration Form";
 </script>
-
-
-
 
 <!-- ############# CONTENT ############# -->
 <div class="content">
-
-    <div id="modal" class="row">
+    <div id="modal" class="row" hidden="true">
         <div class="col-sm-12">
             <ul id="section-nav">
-                <security:authorize ifAnyGranted="1030">
-                    <li class="current"><a  id="student-details-enrollment" href="#">Details</a></li>
-                    </security:authorize>
-                    <security:authorize ifAnyGranted="1001">
-                    <li><a id="student-qualification-enrollment" href="#">Education Qualifications</a></li>
-                    </security:authorize>
-                    <security:authorize ifAnyGranted="1002">
-                    <li><a id="student-activity-enrollment" href="#">Activities</a></li>
-                    </security:authorize>
-                    <security:authorize ifAnyGranted="1003">
-                    <li><a id="student-achivement-enrollment" href="student-achivement-enrollment">Achievements</a></li>
-                    </security:authorize>
-                <!--                <li><a id="student-scholarship-enrollment"
-                                       href="student-scholarship-enrollment">Scholarship</a></li>-->
-                <security:authorize ifAnyGranted="1005">
-                    <li><a id="student-sibling-enrollment" href="student-sibling-enrollment">Sibling</a></li>
-                    </security:authorize>
-                    <security:authorize ifAnyGranted="1006">
-                    <li><a id="parent-details-enrollment" href="parent-details-enrollment">Parents</a></li>
-                    </security:authorize>
-                    <security:authorize ifAnyGranted="1007">
-                    <li><a id="student-documents-loader" href="student-documents-loader">Attachments</a></li>
-                    </security:authorize>
+               
+                    <li class="current" ><a id="details-enrollment" href="#">Details</a></li>
+                 
+                    
+                    <li><a id="bussiness-details" href="#">Business Details</a></li>
+                     
+                       
+                    <li><a id="income-and-expenses" href="#">Income and Expenses</a></li>
+                    
+                    
+                    <li><a id="guarantor-profile" href="#">
+                            Guarantor Profile</a></li>              
             </ul>
-            <a href="student-details-enrollment.jsp"></a>
         </div>
     </div>
 
     <div class="row">
         <div class="col-sm-12">
-            <h2 class="form-heading">Student Details</h2>
+            <h2 class="form-heading">Customer  Details</h2>
         </div>
     </div>
 
@@ -55,56 +45,6 @@
             <div class="col-sm-6">
                 <div class="form-section">
                     <h3 class="form-subheading">Personal Details</h3>
-
-                    <div class="form-group">
-                        <label class="control-label col-sm-2 col-md-3 is-required"
-                               for="admission">Admission Date</label>
-                        <div class="col-sm-10 col-md-9">
-                            <div class="input-group date">
-                                <input type="text" class="form-control datepicker other"
-                                       id="admission" name="admission" data-date-format="mm/dd/yyyy" />
-                                <span class="input-group-addon"> <span
-                                        class="glyphicon glyphicon-calendar"></span>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="control-label col-sm-2 col-md-3 is-required"
-                               for="ref-no">Student Reference Number</label>
-                        <div class="col-sm-10 col-md-9">
-                            <input type="text"  class="form-control   stringNumberValClass  other" maxlength="20"
-                                   id="ref-no" name="ref-no" placeholder="Student Reference Number" disabled="true">
-                        </div> 
-                    </div>
-
-                    <div class="form-group">
-                        <label class="control-label col-sm-2 col-md-3"
-                               for="ref-no">Student Number</label>
-                        <div class="col-sm-10 col-md-9">
-                            <input type="text" class="form-control stringNumberValClass other" maxlength="30"
-                                   id="stu-no" name="stu-no"
-                                   placeholder="Student Number">
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="control-label col-sm-2 col-md-3"
-                               for="ref-no">Identification Number</label>
-                        <div class="col-sm-4">
-                            <select class="form-control other" id="id-type" name="id-type">
-                                <option value="NRIC">NRIC</option>
-                                <option value="Passport">Passport No.</option>
-                                <option value="Driving Licence">Driving Licence</option>
-                            </select>
-                        </div>
-                        <div class="col-sm-5 col-md-5">
-                            <input type="text" class="form-control stringNumberValClass other"
-                                   id="idenfition-no" name="idenfition-no" maxlength="20"
-                                   placeholder="NRIC/PP/DL">
-                        </div>
-                    </div>
 
                     <div class="form-group">
                         <label class="control-label col-sm-2 col-md-3 is-required"
@@ -126,19 +66,7 @@
                             </div>
                         </div>
                     </div>
-
-                    <div class="form-group">
-                        <label class="control-label col-sm-2 col-md-3 is-required"
-                               for="is-enrolled">Enrolment Status</label>
-                        <div class="col-sm-10 col-md-9">
-                            <select class="form-control other" id="is-enrolled" name="is-enrolled"
-                                    placeholder="Is Enrolled">
-                                <option>Is Enrolled</option>
-                                <option>Withdrawn</option>
-                                <option>Missing in action</option>
-                            </select>
-                        </div>
-                    </div>
+                    
                     <div class="form-group">
                         <label class="control-label col-sm-2 col-md-3 is-required "
                                for="first-name">First Name</label>
@@ -165,7 +93,8 @@
                                    maxlength="30">
                         </div>
                     </div>
-                    <div class="form-group">
+                    
+                       <div class="form-group">
                         <div class="radio col-sm-offset-2 col-md-offset-3">
                             <label class="control-label radio" for="male">Male</label>
                             <div class="col-xs-1 col-sm-1">
@@ -181,7 +110,7 @@
                     <div class="form-group">
                         <label class="control-label col-sm-2 col-md-3 is-required"
                                for="dob">DOB</label>
-                        <div class=" col-md-9">
+                        <div class="col-sm-10 col-md-9">
                             <div class="input-group date">
                                 <input type="text" class="form-control dob-datepicker other"
                                        id="dob" name="dob" data-date-format="mm/dd/yyyy" /> <span
@@ -192,149 +121,90 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="control-label col-sm-2 col-md-3" for="age">Age</label>
-                        <div class="col-md-9">
+                        <label class="control-label col-sm-2 col-md-3"
+                               for="age">Age</label>
+                        <div class="col-sm-10 col-md-9">
                             <input type="text" disabled="disabled"
-                                   class="form-control numberValClass other" id="age" name="age"
+                                   class="form-control numberValClass other" id="age" name="age" placeholder="Age"
                                    maxlength="2">
                         </div>
                     </div>
-                    <div class="form-group">
-                        <div
-                            class="inner-form-group col-sm-5 col-md-4 col-sm-offset-2 col-md-offset-3">
-                            <label class="control-label" for="blood-type">Blood Type</label>
-                            <select class="form-control other" id="blood-type">
-                                <option>O+</option>
-                                <option>A+</option>
-                                <option>B+</option>
-                                <option>AB</option>
-                                <option>O-</option>
-                                <option>N/A</option>
-                            </select>
-                        </div>
-                        <div class="inner-form-group col-sm-5 col-md-4 col-md-offset-1">
-
-                            <label class="control-label  is-required" for="nationality">Nationality</label>
-                            <div class="">
-                                <select class="form-control other" id="nationality"
-                                        name="nationality" placeholder="Nationality">
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div
-                            class="inner-form-group col-sm-5 col-md-4 col-sm-offset-2 col-md-offset-3">
-                            <label class="control-label" for="language">Language 1</label>
-                            <div class="">
-                                <select class="form-control other" id="language1">
-                                </select>
-                            </div>
-
-                        </div>
-                        <div class="inner-form-group col-sm-5 col-md-4 col-md-offset-1">
-                            <label class="control-label" for="language">Language 2</label>
-                            <div class="">
-                                <select class="form-control other" id="language2" name="language2">
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div
-                            class="inner-form-group col-sm-5 col-md-4 col-sm-offset-2 col-md-offset-3">
-                            <label class="control-label" for="religion">Religion</label>
-                            <div class="">
-                                <select class="form-control other" id="religion">
-                                </select>
-                            </div>
-                        </div>
-                        <!--                        <div class="inner-form-group col-sm-5 col-md-4 col-md-offset-1">
-                                                    <label class="control-label" for="otherreligion">Other</label>
-                                                    <div class="">
-                                                        <input type="text" class="form-control other"
-                                                               id="other-religion" placeholder="Other Religion" maxlength="10">
-                                                    </div>
-                                                </div>-->
-                        <div class="inner-form-group col-sm-5 col-md-4 col-md-offset-1">
-                            <label class="control-label"     for="birthplace">Birth Place</label>
-                            <div class="">
-                                <input type="text" class="form-control other" id="birthplace" name="birthplace"
-                                       placeholder="Birth Place" maxlength="30">
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label col-sm-2 col-md-3" for="last-name">Profile
-                            Image</label>
-                        <div class="col-sm-10 col-md-9">
-                            <input id="input-id" type="file" name="files[]" class="uploadFile file"
-                                   data-preview-file-type="text" data-show-upload="false">
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="control-label col-sm-2 col-md-3 is-required"
-                               for="category">Interested Curriculum</label>
-                        <div class="col-sm-10 col-md-9">
-                            <select class="form-control other" id="program" name="program">
-                                <option>Select Curriculum</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="control-label col-sm-2 col-md-3 is-required"
-                               for="category">Student Category</label>
-                        <div class="col-sm-10 col-md-9">
-                            <select class="form-control other" id="category" name="category"
-                                    placeholder="Student Category">
-                                <option>Select Student Category</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label col-sm-2 col-md-3 is-required"
-                               for="category">Source</label>
-                        <div class="col-sm-10 col-md-9">
-                            <select class="form-control other" id="source" name="source">
-                                <option value="">Select Source</option>
-                                <option>Friends/Existing Students</option>
-                                <option>Design Club</option>
-                                <option>Education Fair</option>
-                                <option>Newspaper</option>
-                                <option>Internet/MISY website</option>
-                                <option>Radio</option>
-                                <option>Facebook</option>
-                                <option>Other</option>
-                            </select> <input type="text" class="form-control other"
-                                             placeholder="State the source" id="sourceTxt" name="sourceTxt" />
-                        </div>
-                    </div>
+                                      
                     <div class="form-group">
                         <label class="control-label col-sm-2 col-md-3"
-                               for="student-house">Student House</label>
-                        <div class="col-sm-10 col-md-9">
-                            <select class="form-control other" id="student-house" name="student-house"
-                                    placeholder="Student House">
-                                <option>Select Student House</option>
+                               for="ref-no">Identification Number</label>
+                        <div class="col-sm-4">
+                            <select class="form-control other" id="id-type" name="id-type">
+                                <option value="NIC">NIC</option>
+                                <option value="Passport">Passport No.</option>
+                                <option value="Driving Licence">Driving Licence</option>
                             </select>
                         </div>
+                        <div class="col-sm-5 col-md-5">
+                            <input type="text" class="form-control stringNumberValClass other"
+                                   id="idenfition-no" name="idenfition-no" maxlength="20"
+                                   placeholder="NIC/PP/DL">
+                        </div>
                     </div>
+                    
+                      <div class="form-group">
+                        <label class="control-label col-sm-2 col-md-3 is-required "
+                               for="issued-country">Issued country</label>
+                        <div class="col-sm-10 col-md-9">
+                            <input type="text" class="form-control  other"
+                                   id="issued-country" name="issued-country" placeholder="Issued country"
+                                   maxlength="30">
+                        </div>
+                    </div>
+
+                     <div class="form-group">
+                        <label class="control-label col-sm-2 col-md-3 is-required"
+                               for="occupation">Occupation</label>
+                        <div class="col-sm-10 col-md-9">
+                            <input type="text" class="form-control lastNameVal other"
+                                   id="occupation" name="occupation" placeholder="Occupation"
+                                   maxlength="30">
+                        </div>
+                    </div>
+                     <div class="form-group">
+                        <label class="control-label col-sm-2 col-md-3 is-required"
+                               for="no-of-family-members">No of family members</label>
+                        <div class="col-sm-10 col-md-9">
+                            <input type="text" class="form-control lastNameVal other"
+                                   id="no-family" name="no-family" placeholder="No of family members"
+                                   maxlength="30">
+                        </div>
+                    </div>
+                     <div class="form-group">
+                        <label class="control-label col-sm-2 col-md-3 is-required"
+                               for="no-dependents">Number of dependents</label>
+                        <div class="col-sm-10 col-md-9">
+                            <input type="text" class="form-control lastNameVal other"
+                                   id="no-dependents" name="no-dependents" placeholder="Number of dependents"
+                                   maxlength="30">
+                        </div>
+                    </div>
+                           
+                    <div class="form-group">
+                        <label class="control-label col-sm-2 col-md-3"
+                               for="last-name">Profile Image</label>
+                        <div class="col-sm-10 col-md-9">
+                            <input id="input-id" type="file" name="files[]" class="uploadFile file" accept="image/*"
+                                   data-preview-file-type="text" data-show-upload="false" data-show-remove="true">
+                        </div>
+                    </div>
+                
                 </div>
-
-
             </div>
             <div class="col-sm-6">
                 <div class="form-section">
-                    <h3 class="form-subheading">Personal Address Details</h3>
+                    <h3 class="form-subheading">Address Details</h3>
                     <div class="form-group">
                         <label class="control-label col-sm-3 is-required" for="add1">Street
                             Address 1</label>
                         <div class="col-sm-9">
                             <input type="text" class="form-control other" id="personal-add1"
-                                   name="personal-add1" placeholder="Address 1" maxlength="250">
+                                   name="personal-add1" placeholder="Street Address 1" maxlength="250">
                         </div>
                     </div>
                     <div class="form-group">
@@ -342,203 +212,87 @@
                             Address 2</label>
                         <div class="col-sm-9">
                             <input type="text" class="form-control other" id="personal-add2"
-                                   placeholder="Address 2" maxlength="250">
+                                   placeholder="Street Address 2" maxlength="250">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-sm-3 is-required"
                                for="personal-city">City</label>
                         <div class="col-sm-9">
-                            <select class="form-control other" id="personal-city"
-                                    name="personal-city" placeholder="City"></select>
+                             <input type="text" class="form-control other" id="personal-city"
+                                   placeholder="City" maxlength="250">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="control-label col-sm-3 is-required"
+                        <label class="control-label col-sm-3"
                                for="personal-province">State</label>
                         <div class="col-sm-9">
-                            <select class="form-control other" id="personal-province"
-                                    name="personal-province" placeholder="State"></select>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label col-sm-3 is-required"
-                               for="personal-country">Country</label>
-                        <div class="col-sm-9">
-                            <select class="form-control other" id="personal-country"
-                                    name="personal-country">
-                                <option>Sri Lanka</option>
-                                <option>Maldives</option>
-                                <option>United States of America</option>
-                                <option>United Kingdom</option>
-                                <option>China</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label col-sm-8 col-md-4 checkbox"
-                               for="is-postal"> This is Postal Address</label>
-                        <div class="col-xs-1 col-push-2">
-                            <input type="checkbox" class="other checkbox" id="is-postal"
-                                   name="is-postal" checked="checked">
-                        </div>
-                    </div>
-                </div>
-
-
-                <div class="form-section" id="postal-address-form">
-                    <h3 class="form-subheading">Postal Address Details</h3>
-                    <div class="form-group">
-                        <label class="control-label col-sm-3 is-required" for="add1">Street
-                            Address 1</label>
-                        <div class="col-sm-9">
-                            <input type="text" class="form-control postalAdd ignore"
-                                   id="postal-add1" name="postal-add1" placeholder="Address 1"
-                                   maxlength="250">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label col-sm-3" for="add2">Street
-                            Address 2</label>
-                        <div class="col-sm-9">
-                            <input type="text" class="form-control postalAdd ignore"
-                                   id="postal-add2" placeholder="Address 2" maxlength="250">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label col-sm-3 is-required"
-                               for="postal-city">City</label>
-                        <div class="col-sm-9">
-                            <select class="form-control postalAdd ignore" id="postal-city"
-                                    name="postal-city" placeholder="City"></select>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label col-sm-3 is-required"
-                               for="postal-province">Province</label>
-                        <div class="col-sm-9">
-                            <select class="form-control postalAdd ignore"
-                                    id="postal-province" name="postal-province"
-                                    placeholder="Province/State"></select>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label col-sm-3 is-required"
-                               for="postal-country">Country</label>
-                        <div class="col-sm-9">
-                            <select class="form-control postalAdd ignore" id="postal-country"
-                                    name="postal-country">
-                                <option>Sri Lanka</option>
-                                <option>Maldives</option>
-                                <option>United States of America</option>
-                                <option>United Kingdom</option>
-                                <option>China</option>
-                            </select>
+                             <input type="text" class="form-control other" id="personal-province"
+                                   placeholder="State" maxlength="250">
                         </div>
                     </div>
                 </div>
 
                 <div class="form-section">
-                    <h3 class="form-subheading">Personal Contact Details</h3>
-
-
+                    <h3 class="form-subheading">Contact Details</h3>
                     <div class="form-group">
-                        <label class="control-label col-sm-2 col-md-3 is-required"
+                        <label class="control-label col-sm-3 is-required"
                                for="phone-number">Mobile Number 1</label>
                         <div class="col-sm-9">
                             <input type="text" class="form-control  tpnumberValClass other" id="contact-1"
-                                   name="contact-1" placeholder="Mobile No. 1" maxlength="15">
+                                   name="contact-1" placeholder="Mobile Number 1" maxlength="15">
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label class="control-label col-sm-2 col-md-3"
+                        <label class="control-label col-sm-3 "
                                for="phone-number">Mobile Number 2</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control  tpnumberValClass other" id="contact-2"
-                                   name="contact-2" placeholder="Mobile No. 2" maxlength="15">
+                            <input type="text" class="form-control  tpnumberValClass other" id="contact-2"  name="contact-2"
+                                   placeholder="Mobile Number 2" maxlength="15">
                         </div>
                     </div>
 
 
+
+
                     <div class="form-group">
-                        <label class="control-label col-sm-2 col-md-3"
+                        <label class="control-label col-sm-3 "
                                for="landLine-number">Land Line Number</label>
                         <div class="col-sm-9">
                             <input type="text" class="form-control  tpnumberValClass other" id="landline"
-                                   name="landline" placeholder="Land Line No." maxlength="15">
+                                   name="landline" placeholder="Land Line Number" maxlength="15">
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label class="control-label col-sm-2 col-md-3 is-required"
+                        <label class="control-label col-sm-3 is-required"
                                for="email-personal">Personal Email</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control other" id="email-personal"
-                                   maxlength="100" name="email-personal"
-                                   placeholder="Personal Email">
+                            <input type="text" class="form-control other" id="email-personal" maxlength="100"
+                                   name="email-personal" placeholder="Personal Email">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="control-label col-sm-2 col-md-3" for="email-college">Email</label>
+                        <label class="control-label col-sm-3" for="email-college">Email</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control other" id="email"
-                                   name="email" maxlength="100" placeholder="Email">
+                            <input type="text" class="form-control other" id="email" name="email" maxlength="100"
+                                   placeholder="Email">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="control-label col-sm-2 col-md-3" for="fax">Fax</label>
+                        <label class="control-label col-sm-3" for="fax">Fax</label>
                         <div class="col-sm-9">
                             <input type="text" class="form-control tpnumberValClass other" id="fax" name="fax" maxlength="15"
-                                   placeholder="Fax No.">
+                                   placeholder="Fax Number">
                         </div>
                     </div>
                 </div>
-                <div class="form-section">
-                    <h3 class="form-subheading">Previous School Details</h3>
-                    <div class="form-group">
-                        <label class="control-label col-sm-2 col-md-3 is-required"
-                               for="previous-school">Previous School</label>
-                        <div class="col-sm-9">
-                            <input type="text" id="previousSchoolId" hidden="true">
-                            <select class="form-control other" id="previous-school"
-                                    name="previous-school"></select>
-                            <span id="school_previous"></span>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label col-sm-2 col-md-3 is-required"
-                               for="reason">Reason For Leaving</label>
-                        <div class="col-sm-9">
-                            <textarea class="form-control other" id="reason" name="reason"
-                                      maxlength="100" style="resize: none"
-                                      placeholder="Reason For Leaving"></textarea>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-sm-offset-3 col-sm-9 text-right">
-                            <button id="resetEmg" type="button" class="btn-custom btn-cancel">Clear</button>
-                            <button id="add" type="button" class="btn-custom btn-primary">Add</button>
-                        </div>
-                    </div>
-                    <table id="previous-school-table" class="form-table"></table>
-                </div>
-                <div class="form-section">
-                    <!--                    <h3 class="form-subheading">How do you want to be notified?</h3>-->
-                    <div class="form-group">
-                        <label class="control-label col-sm-2 col-md-4 checkbox"
-                               for="email-checkbox"> Email Notifications</label>
-                        <div class="col-xs-1 col-push-2">
-                            <input type="checkbox" class="other checkbox" id="email-checkbox"
-                                   name="alert" checked="checked">
-                        </div>
-                    </div>
-                </div>
-            </div>
+                
             <div class="form-group">
                 <div class="col-sm-offset-3 col-sm-9 text-right">
-<!--                    <button id="resetButton" type="button"
-                            class="btn-custom btn-cancel">Clear</button>-->
+                    <button id="resetButton" type="button"
+                            class="btn-custom btn-cancel">Reset</button>
                     <button id="submit" type="button" class="btn-custom btn-primary">Submit</button>
                 </div>
             </div>
@@ -548,21 +302,15 @@
 
 </div>
 <!-- ############# /CONTENT ############# -->
+<style>
+    .activeClass{
+        background: #00ff00; 
+    }
+</style>
 <%@include file="template/main/footer.jsp"%>
-<script
-src="${pageContext.servletContext.contextPath}/resources/js/common-functions.js"></script>
-<script
-src="${pageContext.servletContext.contextPath}/resources/js/common-dropdown.js"></script>
-<script
-src="${pageContext.servletContext.contextPath}/resources/js/student-enrollment-init.js"></script>
-<script
-src="${pageContext.servletContext.contextPath}/resources/js/validation/common-validation.js"></script>
-<script
-src="${pageContext.servletContext.contextPath}/resources/js/validation/student-details-validation.js"></script>
-<script
-src="${pageContext.servletContext.contextPath}/resources/js/student-details-enrollment-modify.js"></script>
-
-<script
-src="${pageContext.servletContext.contextPath}/resources/js/init.js"></script>
+<script src="${pageContext.servletContext.contextPath}/resources/js/common-functions.js"></script>
+<script src="${pageContext.servletContext.contextPath}/resources/js/common-dropdown.js"></script>
+<script src="${pageContext.servletContext.contextPath}/resources/js/member-details-enrollment-modify.js"></script>
+<script src="${pageContext.servletContext.contextPath}/resources/js/init.js"></script>
 
 
