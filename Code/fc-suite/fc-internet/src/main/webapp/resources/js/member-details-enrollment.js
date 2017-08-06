@@ -1,5 +1,6 @@
 //################### Global Variable ###############################################
 var customerSaveUrl = "create-customer/save";
+var getUsers = "create-customer/find/groupId";
 
 var title;
 var status;
@@ -80,6 +81,7 @@ function initTable() {
 //############################# LOADINGS #############################
 $(document).ready(function () {   
     initTable();
+    loadData();
 });
 
 // ################### Data ###############################################
@@ -518,3 +520,34 @@ $("#title").change(function () {
 
 });
 
+function loadData() {
+    
+    //Loads from database
+    data = ajaxLoadData(getUsers, "GET", getUrlVars()["groupId"]);
+    //Loading database data to bootstrap table
+    table.bootstrapTable('load', data);
+
+}
+
+function ajaxLoadData(url, type, groupId) {
+
+    var returnData = null;
+    console.log(groupId);
+    $.ajax({
+        type: type,
+        url: url,
+        async: false,
+        data: {
+            groupId: groupId
+        }, headers: {
+            'X-CSRF-TOKEN': token
+        },
+        success: function (data) {
+            returnData = data;
+        },
+        error: function () {
+            alert("Failed to load ");
+        }
+    });
+    return returnData;
+}

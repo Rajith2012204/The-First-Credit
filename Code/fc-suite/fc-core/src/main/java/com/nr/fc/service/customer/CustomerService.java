@@ -40,5 +40,12 @@ public interface CustomerService {
      * @return 
      */
     public Customer findByCustomerId(String customerId);
+    
+    /**
+     * 
+     * @param groupId
+     * @return 
+     */
+    public List<Customer>findCustomerByGroupId(String groupId);
 
 }

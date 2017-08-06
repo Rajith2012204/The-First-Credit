@@ -13,8 +13,10 @@ import com.nr.fc.json.model.CustomerJson;
 import com.nr.fc.json.model.JsonReturn;
 import com.nr.fc.json.objects.Contact;
 import com.nr.fc.model.Customer;
+import com.nr.fc.model.CustomerGroup;
 import com.nr.fc.model.ImageBank;
 import com.nr.fc.service.customer.CustomerService;
+import com.nr.fc.service.customergroup.CustomerGroupService;
 import com.nr.fc.util.DateUtil;
 import java.util.ArrayList;
 import java.util.Date;
@@ -36,6 +38,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 @RequestMapping(value = ServicePath.ADMIN_PREFIX + ServicePath.CREATE_CUSTOMER)
 public class CustomerController {
+    
+     @Autowired
+    private CustomerGroupService customerGroupService;
 
     @Autowired
     private CustomerService customerService;
@@ -80,6 +85,17 @@ public class CustomerController {
         List<Contact> contactList = new ArrayList<>();
         try {
 
+            CustomerGroup customerGroup= customerGroupService.findByGroupId(groupId);
+            
+            if(null!=customerGroup){
+                
+                 customer.setGroupId(customerGroup);
+                
+            }else{
+                
+                  throw new BussinessException("Group Does Not Exist !");
+            }
+              
             customer.setSalutaionId(salutaionId);
             customer.setFirstName(txtFirstName);
             customer.setMiddleName(txtMiddleName);
@@ -157,6 +173,17 @@ public class CustomerController {
     public CustomerJson findByCustomerId(@RequestParam(value = "custormerId", required = true) String custormerId) {
 
         Customer customer = customerService.findByCustomerId(custormerId);
+
+        return customerJsonUtil.toJson(customer);
+
+    }
+    
+    
+    @RequestMapping(value = "/find/groupId", method = RequestMethod.GET, headers = "Accept=application/json")
+    @ResponseBody
+    public List<CustomerJson> findCustomerByGroupId(@RequestParam(value = "groupId", required = true) String groupId) {
+
+        List<Customer> customer = customerService.findCustomerByGroupId(groupId);
 
         return customerJsonUtil.toJson(customer);
 

@@ -16,6 +16,7 @@ public class CustomerJson {
     private String firstName;
     private String middleName;
     private String lastName;
+    private String memberName;
     private String dateOfBirth;
     private String gender;
     private String idType;
@@ -385,6 +386,20 @@ public class CustomerJson {
      */
     public void setFax(String fax) {
         this.fax = fax;
+    }
+
+    /**
+     * @return the memberName
+     */
+    public String getMemberName() {
+        return memberName;
+    }
+
+    /**
+     * @param memberName the memberName to set
+     */
+    public void setMemberName(String memberName) {
+        this.memberName = memberName;
     }
 
 }

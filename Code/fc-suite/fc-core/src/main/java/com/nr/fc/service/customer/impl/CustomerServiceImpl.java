@@ -111,4 +111,12 @@ public class CustomerServiceImpl implements CustomerService {
         return customerDao.findbyQuerySingle(sql, params);
     }
 
+    @Override
+    public List<Customer> findCustomerByGroupId(String groupId) {
+        String sql = "SELECT c FROM Customer c WHERE c.groupId.groupId = :groupId";
+        Map<String, Object> params = new HashMap<>();
+        params.put("groupId", groupId);
+        return customerDao.findbyQuery(sql, params);
+    }
+
 }
