@@ -14,8 +14,8 @@
     <class>com.nr.fc.model.UserPasswordAudit</class>
     <class>com.nr.fc.model.UserCategory</class>
     <class>com.nr.fc.model.Role</class>
-    <class>com.nr.fc.model.Customer</class>
     <class>com.nr.fc.model.CustomerContact</class>
+    <class>com.nr.fc.model.Customer</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <!-- DEVELOPING CONFIG #######################-->

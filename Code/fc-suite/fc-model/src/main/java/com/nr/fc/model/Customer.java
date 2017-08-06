@@ -7,9 +7,7 @@ package com.nr.fc.model;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -18,18 +16,16 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Naveen
+ * @author Rajith
  */
 @Entity
 @Table(name = "fc_customer")
@@ -155,11 +151,12 @@ public class Customer implements Serializable {
     @Column(name = "added_date")
     @Temporal(TemporalType.TIMESTAMP)
     private Date addedDate;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "customer")
-    private List<CustomerContact> customerContactList;
     @JoinColumn(name = "image_id", referencedColumnName = "image_id")
     @ManyToOne
     private ImageBank imageId;
+    @JoinColumn(name = "group_id", referencedColumnName = "group_id")
+    @ManyToOne(optional = false)
+    private CustomerGroup groupId;
 
     public Customer() {
     }
@@ -373,21 +370,20 @@ public class Customer implements Serializable {
         this.addedDate = addedDate;
     }
 
-    @XmlTransient
-    public List<CustomerContact> getCustomerContactList() {
-        return customerContactList;
-    }
-
-    public void setCustomerContactList(List<CustomerContact> customerContactList) {
-        this.customerContactList = customerContactList;
-    }
-
     public ImageBank getImageId() {
         return imageId;
     }
 
     public void setImageId(ImageBank imageId) {
         this.imageId = imageId;
+    }
+
+    public CustomerGroup getGroupId() {
+        return groupId;
+    }
+
+    public void setGroupId(CustomerGroup groupId) {
+        this.groupId = groupId;
     }
 
     @Override
