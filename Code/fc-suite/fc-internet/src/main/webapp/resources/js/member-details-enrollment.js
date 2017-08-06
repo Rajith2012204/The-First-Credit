@@ -155,6 +155,7 @@ function saveDetail() {
             'X-CSRF-TOKEN': token
         },
         data: {
+            groupId: getUrlVars()["groupId"],
             customerIdentificationNo: nationalID,
             idType: $("#id-type").val(),
             txtPersonalAddress1: personalAddressOne,

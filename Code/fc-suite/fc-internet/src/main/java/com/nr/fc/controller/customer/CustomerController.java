@@ -47,7 +47,9 @@ public class CustomerController {
 
     @RequestMapping(value = "/save", method = RequestMethod.POST, headers = "Accept=application/json")
     @ResponseBody
-    public JsonReturn save(@RequestParam(value = "nationalID", required = false) String nationalID,
+    public JsonReturn save(
+            @RequestParam(value = "groupId", required = false) String groupId,
+            @RequestParam(value = "nationalID", required = false) String nationalID,
             @RequestParam(value = "idType", required = false) String idType,
             @RequestParam(value = "txtPersonalAddress1", required = false) String txtPersonalAddress1,
             @RequestParam(value = "txtPersonalAddress2", required = false) String txtPersonalAddress2,
