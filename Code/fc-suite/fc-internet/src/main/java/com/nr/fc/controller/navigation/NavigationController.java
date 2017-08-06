@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
  *
- * @author Amith Fernando
+ * @author Rajith Asanka
  */
 @Controller
 public class NavigationController {
@@ -60,10 +60,30 @@ public class NavigationController {
     public String modifyMember() {
         return "member-details-enrollment-modify";
     }
+    
+     //##################################
+    //Member Business Details Creation
+    //##################################
 
     @RequestMapping(value = NavigationPath.ADMIN_PREFIX + NavigationPath.CREATE_MEMBER_BUSINESS_DETAILS, method = RequestMethod.GET)
     public String createBusinessDetails() {
         return "member-business-details-enrollment";
+    }
+    
+     //##################################
+    //Member Income and Expenses Creation
+    //##################################
+     @RequestMapping(value = NavigationPath.ADMIN_PREFIX + NavigationPath.CREATE_MEMBER_INCOME_EXPENSES, method = RequestMethod.GET)
+    public String createIncomeExpensesDetails() {
+        return "member-income-and-expenses";
+    }
+    
+     //##################################
+    //Member Guarantor Profile Creation
+    //##################################
+     @RequestMapping(value = NavigationPath.ADMIN_PREFIX + NavigationPath.CREATE_MEMBER_GURANTOR_PROFILE, method = RequestMethod.GET)
+    public String createGurantorProfileDetails() {
+        return "member-gurantor-profile";
     }
 
 }

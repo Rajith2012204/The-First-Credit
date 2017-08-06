@@ -2,7 +2,7 @@ package com.nr.fc.controller.navigation;
 
 /**
  *
- * @author Amith
+ * @author Rajith
  */
 public class NavigationPath {
 
@@ -43,4 +43,15 @@ public class NavigationPath {
     //Member Business Details creation
     //##################################
     public static final String CREATE_MEMBER_BUSINESS_DETAILS = "/create-member-business-details";
+    
+     //##################################
+    //Member Income and Expenses
+    //##################################
+    public static final String CREATE_MEMBER_INCOME_EXPENSES = "/create-member-income-expenses";
+    
+     //##################################
+    //Member Guarantor Profile 
+    //##################################
+    public static final String CREATE_MEMBER_GURANTOR_PROFILE = "/create-member-gurantor-profile";
+    
 }
