@@ -75,7 +75,7 @@ function initReference() {
 //#############################
 $(document).ready(function () {
     $('.active').removeClass('active');
-    $("#common-menu").addClass("active");
+    $("#common-menu").addClass("active");  
     //initReference();
     //intilizing table
     initTable();

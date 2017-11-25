@@ -58,7 +58,7 @@
                                                     </c:when>
                                                 </c:choose>
 
-                                                <i class="fa fa-info"></i>
+                                                <i class="fa fa-user"></i>
                                                 <span class="nav-text">My Profile</span>
                                             </a>
                                             </li>
@@ -165,10 +165,24 @@
                                             </security:authorize>
                                                 <li>
                                                     <a href="#" class="dash-nav" id="submenu-group">                                          
-                                                        <i class="fa fa-user"></i>
+                                                        <i class="fa fa-users"></i>
                                                         <span class="nav-text">Group</span>
                                                     </a> 
-                                                </li>                    
+                                                </li>  
+                                                
+                                                <li>
+                                                    <a href="#" class="dash-nav" id="submenu-product">                                          
+                                                        <i class="fa fa-folder"></i>
+                                                        <span class="nav-text">Product</span>
+                                                    </a> 
+                                                </li>  
+                                                
+                                                  <li>
+                                                    <a href="#" class="dash-nav" id="submenu-product">                                          
+                                                        <i class="fa fa-building"></i>
+                                                        <span class="nav-text">Reports</span>
+                                                    </a> 
+                                                </li>  
                                             <security:authorize access="hasRole('1057') or hasRole('1061') or hasRole('1065') or hasRole('1069') or hasRole('1077') or hasRole('1079')">
                                                 <li>
                                                     <a href="#"  class="dash-nav" id="submenu-courses">
@@ -783,7 +797,7 @@
                                                            
                                                                 <li>
                                                                     <a href="${pageContext.request.contextPath}/admin/create-group" class=""> 
-                                                                        <i class="fa fa-user"></i>
+                                                                        <i class="fa fa-users"></i>
                                                                         <span class="nav-text">Add Group</span>
                                                                     </a> 
                                                                 </li>
@@ -791,7 +805,7 @@
                                                             
                                                                 <li> 
                                                                     <a href="${pageContext.request.contextPath}/admin/search-group">
-                                                                        <i class="fa fa-user"></i> 
+                                                                        <i class="fa fa-users"></i> 
                                                                         <span class="nav-text">Search Group</span> 
 
                                                                     </a> 

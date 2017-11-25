@@ -560,9 +560,9 @@ form .dropdown-toggle:hover {
 
 #section-nav li:hover,
 #section-nav li.current  {
-    background: #de4046;
+    background: #b8860b;
     color: #fff;
-    font-weight: 600;
+    font-weight: 600;s
     text-decoration: none; }
 
 .btn-wrapper {

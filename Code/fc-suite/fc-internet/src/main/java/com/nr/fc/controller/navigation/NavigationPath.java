@@ -7,7 +7,7 @@ package com.nr.fc.controller.navigation;
 public class NavigationPath {
 
     /**
-     * Admin Role Folder
+     *   Admin Role Folder
      */
     public static final String ADMIN_PREFIX = "/admin";
 
