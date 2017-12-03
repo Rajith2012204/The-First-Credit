@@ -120,7 +120,7 @@
 
                 <div class="form-group">
                     <div class="col-sm-offset-3 col-sm-9 text-right">
-                        <button id="clear" type="reset" class="btn-custom btn-cancel">Clear</button>
+                        <button id="clear" type="reset" class="btn-custom btn-cancel">Reset</button>
                         <button id="add" type="button" class="btn-custom btn-primary">Add</button>
                     </div>
                 </div>
