@@ -35,7 +35,7 @@
 
     <div class="row">
         <div class="col-sm-12">
-            <h2 class="form-heading">Customer  Details</h2>
+            <h2 class="form-heading">Member  Details</h2>
         </div>
     </div>
 
@@ -66,7 +66,6 @@
                             </div>
                         </div>
                     </div>
-                    
                     <div class="form-group">
                         <label class="control-label col-sm-2 col-md-3 is-required "
                                for="first-name">First Name</label>

@@ -9,6 +9,8 @@ import com.nr.fc.json.model.CustomerJson;
 import com.nr.fc.model.Customer;
 import com.nr.fc.model.CustomerContact;
 import com.nr.fc.service.customer.CustomerContactService;
+import com.nr.fc.util.DateUtil;
+import com.nr.fc.util.DateUtil.Formats;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -105,7 +107,9 @@ public class CustomerJsonUtil {
         customerJson.setFirstAddress(customerObj.getFirstAddress());
         customerJson.setSecondAddress(customerObj.getSecondAddress());
         customerJson.setCity(customerObj.getCity());
+        customerJson.setCountry(customerObj.getCountry());
         customerJson.setProvince(customerObj.getProvince());
+        customerJson.setDateOfBirth(DateUtil.dateToString(customerObj.getDateOfBirth(), Formats.DEFAULTDATE));
         //customerJson.setImageId(customer.geti);
         customerJson.setStatus(customerObj.getStatus());
 

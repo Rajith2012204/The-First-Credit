@@ -1,5 +1,6 @@
 //################### Global Variable ###############################################
 var customerSaveUrl = "create-customer/save";
+var customerUpdateUrl = "create-customer/update";
 var getUsers = "create-customer/find/groupId";
 
 var title;
@@ -58,13 +59,13 @@ function initTable() {
                 align: 'left',
                 valign: 'bottom',
                 sortable: true
-            }, {
+            },{
                 field: 'status',
                 title: 'Status',
                 align: 'left',
                 valign: 'bottom',
                 sortable: true
-            }, {
+            },{
                 field: 'action',
                 title: 'Edit',
                 align: 'left',
@@ -72,6 +73,14 @@ function initTable() {
                 sortable: true,
                 formatter: operateFormatter,
                 events: operateEvents
+            },{
+                field: 'memberDetail',
+                title: 'Add Details',
+                align: 'left',
+                valign: 'bottom',
+                sortable: false,
+                formatter: operateFormatterMember,
+                events: operateEventsAddMemberDetail
             }]
     });
 }
@@ -179,7 +188,62 @@ function saveDetail() {
             console.log(data);
 
             if (data.success === "true") {
-                showSaveMsg(data.result);
+                showSaveMsg(data);
+            } else {
+                showErrorMsg("Error", data.errorMessage);
+                imageLoaded = false;
+            }
+
+        },
+        error: function () {
+            alert("Failed to load ");
+        }
+    });
+}
+
+function updateDetail() {
+
+    $.ajax({
+        type: "POST",
+        url: customerUpdateUrl,
+        async: false,
+        headers: {
+            'X-CSRF-TOKEN': token
+        },
+        data: {
+            groupId: getUrlVars()["groupId"],
+            customerId:$("#custId").val(),
+            customerIdentificationNo: nationalID,
+            idType: $("#id-type").val(),
+            txtPersonalAddress1: personalAddressOne,
+            txtPersonalAddress2: personalAddressTwo,
+            sltPersonalProvince: personalAddressProvince,
+            sltPersonalCity: personalAddressCity,
+            salutaionId: title,
+            sltGender: gender,
+            txtFirstName: firstName,
+            txtMiddleName: middleName,
+            txtLastName: lastName,
+            txtDob: dob,
+            occupation: occupation,
+            noFamily: noFamily,
+            noDependents: noDependents,
+            issuedCountry: issuedCountry,
+            chkActive: status,
+            username: username,
+            fileUpload: fileUpload,
+            phoneNoOne: mobileNoOne,
+            phoneNoTwo: mobileNoTwo,
+            landLine: landLineNo,
+            personalEmail: personalEmail,
+            email: email,
+            fax: fax
+        },
+        success: function (data) {
+            console.log(data);
+
+            if (data.success === "true") {
+                showSaveMsg(data);
             } else {
                 showErrorMsg("Error", data.errorMessage);
                 imageLoaded = false;
@@ -231,16 +295,81 @@ function operateFormatter(value, row, index) {
 
 window.operateEvents = {
     'click .edit': function (e, value, row, index) {
-//        clearBtn.click();
-//        $("#province").val(row.provinceId);
-//        $("#country").val(row.countryId);
-//        $("#details").val(row.description);
-//        $("#status").val(row.status);
-//        $('#country').attr('disabled', 'true');
-//        $('#province').attr('disabled', 'true');
-//        $('#add').html('Update');
+        //clearBtn.click();
+        console.log(row);
+        $("#custId").val(row.customerId);
+        $("#title").val(row.salutaionId);
+        $("#is-active").is(':checked'); // true
+        $("#first-name").val(row.firstName);
+        $("#middle-name").val(row.middleName);
+        $("#last-name").val(row.lastName);
+        
+        //set gender
+        if (row.gender == "1") {
+        $("#male").attr('checked', true);
+        } else if (row.gender == "0") {
+        $("#female").attr('checked', true);
+        }
+        
+        $("#dob").val(row.dateOfBirth);
+        $("#age").val(getAge($("#dob").val()));
+        
+        
+        $("#idenfition-no").val(row.customerIdentificationNumber);
+        $("#id-type").val(row.idType);
+
+
+        $("#personal-add1").val(row.firstAddress);
+        $("#personal-add2").val(row.secondAddress);
+        $("#personal-city").val(row.city);
+        $("#personal-province").val(row.province);
+        $("#personal-province").val(row.province);
+
+        $("#occupation").val(row.occupation);
+        $("#no-family").val(row.noOfFamilyMembers);
+        $("#no-dependents").val(row.noOfDependents);
+        $("#issued-country").val(row.issueCountry);
+
+        $("#contact-1").val(row.mobileNumberOne);
+        $("#contact-2").val(row.mobileNumberTwo);
+        $("#landline").val(row.landLineNumber);
+        $("#email-personal").val(row.personalEmail);
+        $("#email").val(row.email);
+        $("#fax").val(row.fax);
+
+        username = $("#txtUserName").val();
+
+        if (row.status==="Active") {
+
+          $("#is-active").prop( "checked", true );
+           
+        } else {
+            
+          $("#is-active").prop('checked', false);
+          
+        }
+        
+        $('#submit').html('Update');
     }
 };
+
+//Other Events
+function operateFormatterMember(value, row, index) {
+    return [
+        '<a class="edit ml10" href="javascript:void(0)" title="Edit">',
+        '<i class="glyphicon glyphicon-pencil"></i>',
+        '</a>'
+    ].join('');
+}
+
+window.operateEventsAddMemberDetail = {
+    'click .edit': function (e, value, row, index) {
+        console.log("clicked",row);
+        window.location.href = "create-member-business-details?groupId=" + row.groupId;
+    }
+};
+
+
 
 // ################### EVENTS ###############################################
 
@@ -273,9 +402,7 @@ $('#input-id').on('fileloaded',
         });
 
 $("#resetButton").click(function () {
-    cancelValidation();
-    $('#category').removeAttr('disabled');
-    $("#form-student-details")[0].reset();
+     clearDetailPage();
 });
 
 
@@ -358,7 +485,7 @@ function generateStudentViewData() {
     content += "</tr>";
     content += "<tr>";
     content += "<td>Age</td>";
-    content += "<td>" + age + "</td>";
+    content += "<td>" + $("#age").val() + "</td>";
     content += "</tr>";
     ////---Personal Address Details----///////
     content += "<tr><th colspan='2'>Personal Address Details</th></tr>";
@@ -425,7 +552,14 @@ function showMemberSaveconfirmation() {
                 action: function (dialog) {
                     dialog.enableButtons(false);
                     dialog.setClosable(false);
-                    saveEvent();
+                    var btnstatus=$('#submit').html();
+                    if(btnstatus==='Submit'){
+                         saveEvent();
+                         
+                    }else{
+                       updateDetail();
+                    }
+                   
                     dialog.close();
                 }
             }, {
@@ -437,19 +571,20 @@ function showMemberSaveconfirmation() {
     });
 }
 
-function showSaveMsg(memberId) {
+function showSaveMsg(result) {
 
     dialogInstance = new BootstrapDialog();
     dialogInstance.setTitle('Save Message');
-    dialogInstance.setMessage("Entry saved!, Customer Id is " + memberId);
+    dialogInstance.setMessage("Entry saved!, Customer Id is " + result.result);
     dialogInstance.setType(BootstrapDialog.TYPE_SUCCESS);
     dialogInstance.open();
 
     setTimeout(function () {
-        showHeadings(memberId);
+        //showHeadings(memberId);
         dialogInstance.close();
         imageLoaded = false;
-        window.location.href = "member-details-enrollment-modify?customerId=" + memberId;
+        window.location.href = "create-member?groupId=" + result.errorCode;
+        loadData();
     }, 3000);
 
 }
@@ -467,46 +602,34 @@ function showHeadings(memberId) {
 
 
 function clearDetailPage() {
-    $("#txtStudentReffNumber").val("");
-    $("#txtApplicationNumber").val("");
-    $("#sltStudentCategory").val("");
-    $("#sltHouse").val("");
-    $("#textareaReasonForJoining").val("");
-    $("#txtTitle").val("");
-    $("#txtNIC").val("");
-    $("#sltGender").val("");
-    $("#txtPassport").val("");
-    $("#txtDrivingLicense").val("");
-    $("#txtFirstName").val("");
-    $("#txtMiddleName").val("");
-    $("#txtLastName").val("");
-    $("#txtDob").val("");
-    $("#txtAge").val("");
-    $("#sltBloodGroup").val("O+");
-    $("#sltReligion").val("");
-    $("#sltLanguage").val("");
-    $("#txtPersonalAddress1").val("");
-    $("#txtPersonalAddress2").val("");
-    $("#sltPersonalCountry").val("");
-    $("#sltPersonalProvince").val("");
-    $("#sltPersonalCity").val("");
-    $("#txtPostalAddress1").val("");
-    $("#txtPostalAddress2").val("");
-    $("#sltPostalCountry").val("");
-    $("#sltPostalProvince").val("");
-    $("#sltPostalCity").val("");
-    $("#contact-1").val("");
-    $("#contact-2").val("");
-    $("#email-personal").val("");
-    $("#email-college").val("");
-    $("#email").val("");
-    $("#fax").val("");
-    $("#emergency-name").val("");
-    $("#emergency-number").val("");
-    $("#emergency-relationship").val("");
-    $("#source").val("");
-    $("#sourceTxt").val("");
-    $("#sourceTxt").hide();
+     $("#id-type").val("NIC");
+     $("#title").val("Mr.");
+     $("#is-active").prop( "checked", true ); // true
+     $("#male").prop('checked', true);
+     $("#first-name").val("");
+     $("#middle-name").val("");
+     $("#last-name").val("");
+     $("#idenfition-no").val("");
+     $("#age").val("");
+   
+     $("#dob").val("");
+     $("#personal-add1").val("");
+     $("#personal-add2").val("");
+     $("#personal-city").val("");
+     $("#personal-province").val("");
+
+     $("#occupation").val("");
+     $("#no-family").val("");
+     $("#no-dependents").val("");
+     $("#issued-country").val("");
+
+     $("#contact-1").val("");
+     $("#contact-2").val("");
+     $("#landline").val("");
+     $("#email-personal").val("");
+     $("#email").val("");
+     $("#fax").val(""); 
+     $('#submit').html('Save');
 }
 
 $("#title").change(function () {

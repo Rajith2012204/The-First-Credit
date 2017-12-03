@@ -15,6 +15,11 @@ public interface CustomerContactService {
      * @param customerContact
      */
     public void save(CustomerContact customerContact);
+    /**
+     * 
+     * @param customerContact 
+     */
+    public void update(CustomerContact customerContact);
 
     /**
      *

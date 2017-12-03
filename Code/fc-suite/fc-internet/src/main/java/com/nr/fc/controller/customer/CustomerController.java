@@ -95,6 +95,13 @@ public class CustomerController {
                 
                   throw new BussinessException("Group Does Not Exist !");
             }
+            
+            List<Customer> customerNicExist = customerService.findByCustomerNic(nationalID,idType);
+            
+            if(!customerNicExist.isEmpty()){
+                
+                throw new BussinessException("Customer Identification Number Already Exist !");
+            }
               
             customer.setSalutaionId(salutaionId);
             customer.setFirstName(txtFirstName);
@@ -152,7 +159,7 @@ public class CustomerController {
 
             jsonReturn.setSuccess("true");
             jsonReturn.setResult(customer.getCustomerId());
-
+            jsonReturn.setErrorCode(groupId);
         } catch (BussinessException e) {
             jsonReturn.setSuccess("false");
             jsonReturn.setErrorMessage(e.getMsg());
@@ -167,6 +174,148 @@ public class CustomerController {
         }
         return jsonReturn;
     }
+    
+    
+    @RequestMapping(value = "/update", method = RequestMethod.POST, headers = "Accept=application/json")
+    @ResponseBody
+    public JsonReturn update(
+            @RequestParam(value = "groupId", required = false) String groupId,
+            @RequestParam(value = "customerId", required = false) String customerId,
+            @RequestParam(value = "nationalID", required = false) String nationalID,
+            @RequestParam(value = "idType", required = false) String idType,
+            @RequestParam(value = "txtPersonalAddress1", required = false) String txtPersonalAddress1,
+            @RequestParam(value = "txtPersonalAddress2", required = false) String txtPersonalAddress2,
+            @RequestParam(value = "sltPersonalProvince", required = false) String sltPersonalProvince,
+            @RequestParam(value = "sltPersonalCity", required = false) String sltPersonalCity,
+            @RequestParam(value = "salutaionId", required = false) String salutaionId,
+            @RequestParam(value = "sltGender", required = false) String sltGender,
+            @RequestParam(value = "txtFirstName", required = false) String txtFirstName,
+            @RequestParam(value = "txtMiddleName", required = false) String txtMiddleName,
+            @RequestParam(value = "txtLastName", required = false) String txtLastName,
+            @RequestParam(value = "txtDob", required = false) String txtDob,
+            @RequestParam(value = "occupation", required = false) String occupation,
+            @RequestParam(value = "noFamily", required = false) String noFamily,
+            @RequestParam(value = "noDependents", required = false) String noDependents,
+            @RequestParam(value = "issuedCountry", required = false) String issuedCountry,
+            @RequestParam(value = "chkActive", required = false) String chkActive,
+            @RequestParam(value = "username", required = false) String username,
+            @RequestParam(value = "fileUpload", required = false) String fileUpload,
+            @RequestParam(value = "phoneNoOne", required = false) String phoneNoOne,
+            @RequestParam(value = "phoneNoTwo", required = false) String phoneNoTwo,
+            @RequestParam(value = "landLine", required = false) String landLine,
+            @RequestParam(value = "personalEmail", required = false) String personalEmail,
+            @RequestParam(value = "email", required = false) String email,
+            @RequestParam(value = "fax", required = false) String fax) {
+
+        JsonReturn jsonReturn = new JsonReturn();
+        List<Contact> contactList = new ArrayList<>();
+        try {
+
+           
+            Customer customer = customerService.findByCustomerId(customerId);
+            
+            if(null!=customer){
+                
+                      
+            customer.setSalutaionId(salutaionId);
+            customer.setFirstName(txtFirstName);
+            customer.setMiddleName(txtMiddleName);
+            customer.setLastName(txtLastName);
+            customer.setDateOfBirth(DateUtil.stringToDate(txtDob, DateUtil.Formats.DEFAULTDATE));
+
+            customer.setIdType(idType);
+            customer.setCustomerIdentificationNo(nationalID);
+            
+            List<Customer> customerNicExist = customerService.findByCustomerNic(nationalID,idType);
+            
+            if(customerNicExist.size()>1){
+                
+                throw new BussinessException("Customer Identification Number Already Exist !");
+            }
+            
+            
+            customer.setIssudeCountry(issuedCountry);
+            customer.setOccupation(occupation);
+            customer.setNoOfFamilyMembers(noFamily);
+            customer.setNoOfDependents(noDependents);
+
+            customer.setFirstAddress(txtPersonalAddress1);
+            customer.setSecondAddress(txtPersonalAddress2);
+            customer.setCity(sltPersonalCity);
+            customer.setProvince(sltPersonalProvince);
+            customer.setCountry("");
+
+            customer.setStatus(chkActive);
+
+            // setting gender
+            if (sltGender.equalsIgnoreCase("male")) {
+                customer.setGender("1");
+            } else if (sltGender.equalsIgnoreCase("female")) {
+                customer.setGender("0");
+            }
+
+            // student picture
+            if (!StringUtils.isEmpty(fileUpload)) {
+                customer.setImageId(new ImageBank("", fileUpload, GeneralStatus.ACTIVE.toString(), new Date(), username));
+            }
+
+            // Setting Contacts
+            if (!StringUtils.isEmpty(phoneNoOne)) {
+                contactList.add(new Contact("", "Primary", "Telephone", phoneNoOne));
+            }
+            if (!StringUtils.isEmpty(landLine)) {
+                contactList.add(new Contact("", "Primary", "Land Line", landLine));
+            }
+            if (!StringUtils.isEmpty(personalEmail)) {
+                contactList.add(new Contact("", "Primary", "Email", personalEmail));
+            }
+            if (!StringUtils.isEmpty(phoneNoTwo)) {
+                contactList.add(new Contact("", "Normal", "Telephone", phoneNoTwo));
+            }
+            if (!StringUtils.isEmpty(email)) {
+                contactList.add(new Contact("", "Normal", "Email", email));
+            }
+            if (!StringUtils.isEmpty(fax)) {
+                contactList.add(new Contact("", "Normal", "Fax", fax));
+            }
+                
+            }else{
+                
+                  throw new BussinessException("Customer Does Not Exist !");
+            }
+            
+            CustomerGroup customerGroup= customerGroupService.findByGroupId(groupId);
+            
+            if(null!=customerGroup){
+                
+                 customer.setGroupId(customerGroup);
+                
+            }else{
+                
+                  throw new BussinessException("Group Does Not Exist !");
+            }
+        
+            customerService.update(customer, contactList, username);
+
+            jsonReturn.setSuccess("true");
+            jsonReturn.setResult(customer.getCustomerId());
+            jsonReturn.setErrorCode(groupId);
+        } catch (BussinessException e) {
+            jsonReturn.setSuccess("false");
+            jsonReturn.setErrorMessage(e.getMsg());
+            jsonReturn.setErrorCode("123");
+            e.printStackTrace();
+        } catch (Exception e) {
+            jsonReturn.setSuccess("false");
+            jsonReturn.setErrorMessage(e.getMessage());
+            jsonReturn.setErrorCode("123");
+            LOGGER.error("Exception Occured", e);
+            e.printStackTrace();
+        }
+        return jsonReturn;
+    }
+    
+    
 
     @RequestMapping(value = "/find/custormerId", method = RequestMethod.GET, headers = "Accept=application/json")
     @ResponseBody

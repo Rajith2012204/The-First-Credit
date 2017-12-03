@@ -25,37 +25,39 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author Rajith
+ * @author naveendrafernando
  */
 @Entity
 @Table(name = "fc_customer")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Customer.findAll", query = "SELECT c FROM Customer c"),
-    @NamedQuery(name = "Customer.findByCustomerId", query = "SELECT c FROM Customer c WHERE c.customerId = :customerId"),
-    @NamedQuery(name = "Customer.findBySalutaionId", query = "SELECT c FROM Customer c WHERE c.salutaionId = :salutaionId"),
-    @NamedQuery(name = "Customer.findByFirstName", query = "SELECT c FROM Customer c WHERE c.firstName = :firstName"),
-    @NamedQuery(name = "Customer.findByMiddleName", query = "SELECT c FROM Customer c WHERE c.middleName = :middleName"),
-    @NamedQuery(name = "Customer.findByLastName", query = "SELECT c FROM Customer c WHERE c.lastName = :lastName"),
-    @NamedQuery(name = "Customer.findByDateOfBirth", query = "SELECT c FROM Customer c WHERE c.dateOfBirth = :dateOfBirth"),
-    @NamedQuery(name = "Customer.findByGender", query = "SELECT c FROM Customer c WHERE c.gender = :gender"),
-    @NamedQuery(name = "Customer.findByIdType", query = "SELECT c FROM Customer c WHERE c.idType = :idType"),
-    @NamedQuery(name = "Customer.findByCustomerIdentificationNo", query = "SELECT c FROM Customer c WHERE c.customerIdentificationNo = :customerIdentificationNo"),
-    @NamedQuery(name = "Customer.findByIssudeCountry", query = "SELECT c FROM Customer c WHERE c.issudeCountry = :issudeCountry"),
-    @NamedQuery(name = "Customer.findByOccupation", query = "SELECT c FROM Customer c WHERE c.occupation = :occupation"),
-    @NamedQuery(name = "Customer.findByNoOfFamilyMembers", query = "SELECT c FROM Customer c WHERE c.noOfFamilyMembers = :noOfFamilyMembers"),
-    @NamedQuery(name = "Customer.findByNoOfDependents", query = "SELECT c FROM Customer c WHERE c.noOfDependents = :noOfDependents"),
-    @NamedQuery(name = "Customer.findByFirstAddress", query = "SELECT c FROM Customer c WHERE c.firstAddress = :firstAddress"),
-    @NamedQuery(name = "Customer.findBySecondAddress", query = "SELECT c FROM Customer c WHERE c.secondAddress = :secondAddress"),
-    @NamedQuery(name = "Customer.findByCity", query = "SELECT c FROM Customer c WHERE c.city = :city"),
-    @NamedQuery(name = "Customer.findByProvince", query = "SELECT c FROM Customer c WHERE c.province = :province"),
-    @NamedQuery(name = "Customer.findByModifiedBy", query = "SELECT c FROM Customer c WHERE c.modifiedBy = :modifiedBy"),
-    @NamedQuery(name = "Customer.findByModifiedDate", query = "SELECT c FROM Customer c WHERE c.modifiedDate = :modifiedDate"),
-    @NamedQuery(name = "Customer.findByStatus", query = "SELECT c FROM Customer c WHERE c.status = :status"),
-    @NamedQuery(name = "Customer.findByComments", query = "SELECT c FROM Customer c WHERE c.comments = :comments"),
-    @NamedQuery(name = "Customer.findByAddedBy", query = "SELECT c FROM Customer c WHERE c.addedBy = :addedBy"),
-    @NamedQuery(name = "Customer.findByAddedDate", query = "SELECT c FROM Customer c WHERE c.addedDate = :addedDate")})
+    @NamedQuery(name = "Customer.findAll", query = "SELECT c FROM Customer c")
+    , @NamedQuery(name = "Customer.findByCustomerId", query = "SELECT c FROM Customer c WHERE c.customerId = :customerId")
+    , @NamedQuery(name = "Customer.findBySalutaionId", query = "SELECT c FROM Customer c WHERE c.salutaionId = :salutaionId")
+    , @NamedQuery(name = "Customer.findByFirstName", query = "SELECT c FROM Customer c WHERE c.firstName = :firstName")
+    , @NamedQuery(name = "Customer.findByMiddleName", query = "SELECT c FROM Customer c WHERE c.middleName = :middleName")
+    , @NamedQuery(name = "Customer.findByLastName", query = "SELECT c FROM Customer c WHERE c.lastName = :lastName")
+    , @NamedQuery(name = "Customer.findByDateOfBirth", query = "SELECT c FROM Customer c WHERE c.dateOfBirth = :dateOfBirth")
+    , @NamedQuery(name = "Customer.findByGender", query = "SELECT c FROM Customer c WHERE c.gender = :gender")
+    , @NamedQuery(name = "Customer.findByIdType", query = "SELECT c FROM Customer c WHERE c.idType = :idType")
+    , @NamedQuery(name = "Customer.findByCustomerIdentificationNo", query = "SELECT c FROM Customer c WHERE c.customerIdentificationNo = :customerIdentificationNo")
+    , @NamedQuery(name = "Customer.findByIssudeCountry", query = "SELECT c FROM Customer c WHERE c.issudeCountry = :issudeCountry")
+    , @NamedQuery(name = "Customer.findByOccupation", query = "SELECT c FROM Customer c WHERE c.occupation = :occupation")
+    , @NamedQuery(name = "Customer.findByNoOfFamilyMembers", query = "SELECT c FROM Customer c WHERE c.noOfFamilyMembers = :noOfFamilyMembers")
+    , @NamedQuery(name = "Customer.findByNoOfDependents", query = "SELECT c FROM Customer c WHERE c.noOfDependents = :noOfDependents")
+    , @NamedQuery(name = "Customer.findByFirstAddress", query = "SELECT c FROM Customer c WHERE c.firstAddress = :firstAddress")
+    , @NamedQuery(name = "Customer.findBySecondAddress", query = "SELECT c FROM Customer c WHERE c.secondAddress = :secondAddress")
+    , @NamedQuery(name = "Customer.findByCity", query = "SELECT c FROM Customer c WHERE c.city = :city")
+    , @NamedQuery(name = "Customer.findByProvince", query = "SELECT c FROM Customer c WHERE c.province = :province")
+    , @NamedQuery(name = "Customer.findByCountry", query = "SELECT c FROM Customer c WHERE c.country = :country")
+    , @NamedQuery(name = "Customer.findByModifiedBy", query = "SELECT c FROM Customer c WHERE c.modifiedBy = :modifiedBy")
+    , @NamedQuery(name = "Customer.findByModifiedDate", query = "SELECT c FROM Customer c WHERE c.modifiedDate = :modifiedDate")
+    , @NamedQuery(name = "Customer.findByStatus", query = "SELECT c FROM Customer c WHERE c.status = :status")
+    , @NamedQuery(name = "Customer.findByComments", query = "SELECT c FROM Customer c WHERE c.comments = :comments")
+    , @NamedQuery(name = "Customer.findByAddedBy", query = "SELECT c FROM Customer c WHERE c.addedBy = :addedBy")
+    , @NamedQuery(name = "Customer.findByAddedDate", query = "SELECT c FROM Customer c WHERE c.addedDate = :addedDate")})
 public class Customer implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
@@ -119,6 +121,9 @@ public class Customer implements Serializable {
     @Size(max = 255)
     @Column(name = "province")
     private String province;
+    @Size(max = 45)
+    @Column(name = "country")
+    private String country;
     @Lob
     @Size(max = 65535)
     @Column(name = "description")
@@ -151,12 +156,12 @@ public class Customer implements Serializable {
     @Column(name = "added_date")
     @Temporal(TemporalType.TIMESTAMP)
     private Date addedDate;
-    @JoinColumn(name = "image_id", referencedColumnName = "image_id")
-    @ManyToOne
-    private ImageBank imageId;
     @JoinColumn(name = "group_id", referencedColumnName = "group_id")
     @ManyToOne(optional = false)
     private CustomerGroup groupId;
+    @JoinColumn(name = "image_id", referencedColumnName = "image_id")
+    @ManyToOne
+    private ImageBank imageId;
 
     public Customer() {
     }
@@ -314,6 +319,14 @@ public class Customer implements Serializable {
         this.province = province;
     }
 
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
     public String getDescription() {
         return description;
     }
@@ -370,20 +383,20 @@ public class Customer implements Serializable {
         this.addedDate = addedDate;
     }
 
-    public ImageBank getImageId() {
-        return imageId;
-    }
-
-    public void setImageId(ImageBank imageId) {
-        this.imageId = imageId;
-    }
-
     public CustomerGroup getGroupId() {
         return groupId;
     }
 
     public void setGroupId(CustomerGroup groupId) {
         this.groupId = groupId;
+    }
+
+    public ImageBank getImageId() {
+        return imageId;
+    }
+
+    public void setImageId(ImageBank imageId) {
+        this.imageId = imageId;
     }
 
     @Override

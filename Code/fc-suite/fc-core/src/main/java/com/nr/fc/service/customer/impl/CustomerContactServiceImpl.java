@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
@@ -44,6 +45,12 @@ public class CustomerContactServiceImpl implements CustomerContactService {
         Map<String, Object> params = new HashMap<>();
         params.put("customerId", customerId);
         return customerContactDao.findbyQuery(sql, params);
+    }
+
+    @Override
+    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    public void update(CustomerContact customerContact) {
+        customerContactDao.update(customerContact);
     }
 
 }

@@ -29,6 +29,7 @@ public class CustomerJson {
     private String secondAddress;
     private String city;
     private String province;
+    private String country;
     private String imageId;
     private String status;
     private String mobileNumberOne;
@@ -400,6 +401,20 @@ public class CustomerJson {
      */
     public void setMemberName(String memberName) {
         this.memberName = memberName;
+    }
+
+    /**
+     * @return the country
+     */
+    public String getCountry() {
+        return country;
+    }
+
+    /**
+     * @param country the country to set
+     */
+    public void setCountry(String country) {
+        this.country = country;
     }
 
 }

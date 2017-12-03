@@ -33,6 +33,12 @@ public interface CustomerService {
      * @param customer
      */
     public void save(Customer customer);
+    
+    /**
+     * 
+     * @param customer 
+     */
+    public void update(Customer customer);
 
     /**
      *
@@ -47,5 +53,22 @@ public interface CustomerService {
      * @return 
      */
     public List<Customer>findCustomerByGroupId(String groupId);
+    
+    /**
+     * 
+     * @param customerNic
+     * @param customerIdType
+     * @return 
+     */
+    public List<Customer> findByCustomerNic(String customerNic,String customerIdType);
+    
+    /**
+     * 
+     * @param customer
+     * @param contactList
+     * @param userName
+     * @throws Exception 
+     */
+    public void update(Customer customer, List<Contact> contactList, String userName) throws Exception;
 
 }

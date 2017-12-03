@@ -16,7 +16,7 @@
 <div class="content">
 <div class="row">
     <div class="col-sm-12">
-        <h2 class="form-heading">Customer  Details</h2>
+        <h2 class="form-heading">Member  Details</h2>
     </div>
 </div>
 
@@ -46,6 +46,16 @@
                                    name="is-active" checked="checked">
                         </div>
                     </div>
+                </div>
+                
+                 <div class="form-group" hidden="true">
+                        <label class="control-label col-sm-2 col-md-3 is-required "
+                               for="custId"></label>
+                        <div class="col-sm-10 col-md-9">
+                            <input type="text" class="form-control  other"
+                                   id="custId" name="custId" placeholder=""
+                                   maxlength="30">
+                        </div>
                 </div>
 
                 <div class="form-group">

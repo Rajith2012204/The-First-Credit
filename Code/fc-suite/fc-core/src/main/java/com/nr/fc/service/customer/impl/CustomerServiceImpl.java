@@ -7,6 +7,7 @@ package com.nr.fc.service.customer.impl;
 
 import com.nr.fc.dao.CustomerDao;
 import com.nr.fc.enums.GeneralStatus;
+import com.nr.fc.exception.BussinessException;
 import com.nr.fc.json.objects.Contact;
 import com.nr.fc.model.Customer;
 import com.nr.fc.model.CustomerContact;
@@ -22,6 +23,7 @@ import java.util.List;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
@@ -116,6 +118,55 @@ public class CustomerServiceImpl implements CustomerService {
         String sql = "SELECT c FROM Customer c WHERE c.groupId.groupId = :groupId";
         Map<String, Object> params = new HashMap<>();
         params.put("groupId", groupId);
+        return customerDao.findbyQuery(sql, params);
+    }
+
+    @Override
+    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    public void update(Customer customer, List<Contact> contactList, String userName) throws Exception {
+       
+        //update customer
+        customer.setModifiedBy(userName);
+        customer.setModifiedDate(new Date());
+        update(customer);
+
+        // save customer contact
+        for (Contact contact : contactList) {
+            CustomerContactPK customerContactPK = new CustomerContactPK(customer.getCustomerId(), contact.getContactCategory(), contact.getContactType());
+            CustomerContact customerContactObj=customerContactService.findByPk(customerContactPK);
+            
+            customerContactObj.setContact(contact.getContact());
+            customerContactObj.setModifiedBy(userName);
+            customerContactObj.setModifiedDate(new Date());
+            customerContactObj.setStatus(GeneralStatus.ACTIVE);
+            customerContactObj.setCustomer(customer);
+            customerContactService.update(customerContactObj);
+        }
+
+        //save customer image
+        if (customer.getImageId() != null) {
+            ImageBank imageBank = customer.getImageId();
+            imageBank.setImageTypeId(imageTypeService.findById("JPEG"));
+            imageBank.setModifiedBy(userName);
+            imageBank.setModifiedDate(new Date());
+            imageBankService.update(imageBank);
+        }
+        
+        
+    }
+
+    @Override
+    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    public void update(Customer customer) {
+        customerDao.update(customer);
+    }
+
+    @Override
+    public List<Customer> findByCustomerNic(String customerNic, String customerIdType) {
+        String sql = "SELECT c FROM Customer c WHERE c.customerIdentificationNo = :customerIdentificationNo AND c.idType = :idType";
+        Map<String, Object> params = new HashMap<>();
+        params.put("customerIdentificationNo", customerNic);
+        params.put("idType", customerIdType);
         return customerDao.findbyQuery(sql, params);
     }
 
