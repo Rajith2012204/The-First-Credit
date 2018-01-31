@@ -272,7 +272,7 @@
             <%@include file="template/main/footer.jsp"%>
             <script src="${pageContext.servletContext.contextPath}/resources/js/common-functions.js"></script>
             <script src="${pageContext.servletContext.contextPath}/resources/js/common-dropdown.js"></script>
-            <script src="${pageContext.servletContext.contextPath}/resources/js/member-details-enrollment.js"></script>
+            <script src="${pageContext.servletContext.contextPath}/resources/js/member-businees-detail-enrollment.js"></script>
             <script src="${pageContext.servletContext.contextPath}/resources/js/init.js"></script>
 
 

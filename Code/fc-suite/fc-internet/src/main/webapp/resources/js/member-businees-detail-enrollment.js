@@ -365,7 +365,7 @@ function operateFormatterMember(value, row, index) {
 window.operateEventsAddMemberDetail = {
     'click .edit': function (e, value, row, index) {
         console.log("clicked",row);
-        window.location.href = "create-member-business-details?groupId=" + row.groupId+"&customerId="+row.customerId;
+       // window.location.href = "create-member-business-details?groupId=" + row.groupId+"&memberId="+row.groupId;
     }
 };
 
@@ -592,8 +592,6 @@ function showSaveMsg(result) {
 
 function showHeadings(memberId) {
 
-    $("#ref-no").val(memberId);
-    document.getElementById("modal").removeAttribute("hidden");
     document.getElementById("details-enrollment").setAttribute("href", "member-details-enrollment-modify?studentId=" + $("#ref-no").val());
     document.getElementById("bussiness-details").setAttribute("href", "create-member-business-details?studentId=" + $("#ref-no").val());
     document.getElementById("income-and-expenses").setAttribute("href", "student-activity-enrollment?studentId=" + $("#ref-no").val());
@@ -674,3 +672,5 @@ function ajaxLoadData(url, type, groupId) {
     });
     return returnData;
 }
+
+

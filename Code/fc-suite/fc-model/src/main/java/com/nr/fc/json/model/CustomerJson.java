@@ -11,6 +11,7 @@ package com.nr.fc.json.model;
  */
 public class CustomerJson {
 
+    private String groupId;
     private String customerId;
     private String salutaionId;    
     private String firstName;
@@ -415,6 +416,20 @@ public class CustomerJson {
      */
     public void setCountry(String country) {
         this.country = country;
+    }
+
+    /**
+     * @return the groupId
+     */
+    public String getGroupId() {
+        return groupId;
+    }
+
+    /**
+     * @param groupId the groupId to set
+     */
+    public void setGroupId(String groupId) {
+        this.groupId = groupId;
     }
 
 }

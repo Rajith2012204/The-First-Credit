@@ -48,6 +48,7 @@ public class CustomerJsonUtil {
         customerJson.setProvince(customer.getProvince());
         //customerJson.setImageId(customer.geti);
         customerJson.setStatus(customer.getStatus());
+        customerJson.setGroupId(customer.getGroupId().getGroupId());
 
         List<CustomerContact> contactsList = customerContactService.findByCustomerId(customer.getCustomerId());
 
@@ -111,6 +112,7 @@ public class CustomerJsonUtil {
         customerJson.setProvince(customerObj.getProvince());
         customerJson.setDateOfBirth(DateUtil.dateToString(customerObj.getDateOfBirth(), Formats.DEFAULTDATE));
         //customerJson.setImageId(customer.geti);
+        customerJson.setGroupId(customerObj.getGroupId().getGroupId());
         customerJson.setStatus(customerObj.getStatus());
 
         List<CustomerContact> contactsList = customerContactService.findByCustomerId(customerObj.getCustomerId());
