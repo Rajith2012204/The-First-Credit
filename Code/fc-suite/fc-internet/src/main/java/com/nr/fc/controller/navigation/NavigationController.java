@@ -85,5 +85,18 @@ public class NavigationController {
     public String createGurantorProfileDetails() {
         return "member-gurantor-profile";
     }
+    
+    //##################################
+    //Product creation
+    //##################################
+    @RequestMapping(value = NavigationPath.ADMIN_PREFIX + NavigationPath.CREATE_PRODUCT, method = RequestMethod.GET)
+    public String createProduct() {
+        return "create-product";
+    }
+
+    @RequestMapping(value = NavigationPath.ADMIN_PREFIX + NavigationPath.SEARCH_PRODUCT, method = RequestMethod.GET)
+    public String searchProduct() {
+        return "search-product";
+    }
 
 }

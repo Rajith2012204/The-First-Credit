@@ -178,7 +178,7 @@
                                                 </li>  
                                                 
                                                   <li>
-                                                    <a href="#" class="dash-nav" id="submenu-product">                                          
+                                                    <a href="#" class="dash-nav" id="submenu-reports">                                          
                                                         <i class="fa fa-building"></i>
                                                         <span class="nav-text">Reports</span>
                                                     </a> 
@@ -812,66 +812,22 @@
                                                                 </li>                                                                                                                
                                                         </ul>
                                                     </div>
-                                                <security:authorize access="hasRole('1081') or hasRole('1082') or hasRole('1085') or hasRole('1086') or hasRole('1087') or hasRole('1089') or hasRole('1088')">
-                                                    <div class="submenu submenu-class clearfix" id=""> 
-                                                        <h4>Class</h4> 
-                                                        <ul class="submenu-nav">
-                                                            <security:authorize ifAnyGranted="1081">
+                                                <security:authorize>
+                                                    <div class="submenu submenu-product clearfix" id=""> 
+                                                        <h4>Product</h4> 
+                                                        <ul class="submenu-nav">                                                            
                                                                 <li>
-                                                                    <a href="${pageContext.request.contextPath}/admin/student-class-enrollment" > 
+                                                                    <a href="${pageContext.request.contextPath}/admin/create-product" > 
                                                                         <i class="fa fa-book"></i>
-                                                                        <span class="nav-text">Add Class</span>
+                                                                        <span class="nav-text">Add Product</span>
                                                                     </a> 
-                                                                </li>
-                                                            </security:authorize>
-                                                            <security:authorize ifAnyGranted="1082">
+                                                                </li>                                 
                                                                 <li> 
-                                                                    <a href="${pageContext.request.contextPath}/admin/class-details-search">
+                                                                    <a href="${pageContext.request.contextPath}/admin/search-product">
                                                                         <i class="fa fa-book"></i>
-                                                                        <span class="nav-text">Search Class</span> 
+                                                                        <span class="nav-text">Search Product</span> 
                                                                     </a> 
                                                                 </li> 
-                                                            </security:authorize>
-                                                            <security:authorize ifAnyGranted="1085">
-                                                                <li> 
-                                                                    <a href="${pageContext.request.contextPath}/admin/student-class-progression">
-                                                                        <i class="fa fa-book"></i>
-                                                                        <span class="nav-text">Class Prog & Ref</span> 
-                                                                    </a> 
-                                                                </li> 
-                                                            </security:authorize>
-                                                            <security:authorize ifAnyGranted="1086">
-                                                                <li> 
-                                                                    <a href="${pageContext.request.contextPath}/admin/student-class-transfer">
-                                                                        <i class="fa fa-book"></i>
-                                                                        <span class="nav-text">Class Transfer</span> 
-                                                                    </a> 
-                                                                </li> 
-                                                            </security:authorize>
-                                                            <security:authorize ifAnyGranted="1087">
-                                                                <li> 
-                                                                    <a href="${pageContext.request.contextPath}/admin/student-class-demote-transfer">
-                                                                        <i class="fa fa-book"></i>
-                                                                        <span class="nav-text">Class Demote Transfer</span> 
-                                                                    </a> 
-                                                                </li> 
-                                                            </security:authorize>
-                                                            <security:authorize ifAnyGranted="1089">
-                                                                <li>
-                                                                    <a href="${pageContext.request.contextPath}/admin/student-course-transfer">
-                                                                        <i class="fa fa-book"></i> 
-                                                                        <span class="nav-text">Class Curriculum Transfer</span>
-                                                                    </a>
-                                                                </li>
-                                                            </security:authorize>
-                                                            <security:authorize ifAnyGranted="1088">
-                                                                <li>
-                                                                    <a href="${pageContext.request.contextPath}/admin/new-student-class-enrollment">
-                                                                        <i class="fa fa-book"></i>
-                                                                        <span class="nav-text">Class Enrollment</span> 
-                                                                    </a> 
-                                                                </li>
-                                                            </security:authorize>
                                                         </ul>                               
                                                     </div> 
                                                 </security:authorize>

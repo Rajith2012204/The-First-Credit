@@ -30,4 +30,7 @@ public class ServicePath {
   
 //============================== Customer Management ======================================
    public static final String CREATE_CUSTOMER = "/create-customer";
+   
+//============================== Product Management ======================================
+  public static final String CREATE_PRODUCT = "/create-product";
 }
