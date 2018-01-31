@@ -812,7 +812,7 @@
                                                                 </li>                                                                                                                
                                                         </ul>
                                                     </div>
-                                                <security:authorize>
+                                                
                                                     <div class="submenu submenu-product clearfix" id=""> 
                                                         <h4>Product</h4> 
                                                         <ul class="submenu-nav">                                                            
@@ -830,7 +830,6 @@
                                                                 </li> 
                                                         </ul>                               
                                                     </div> 
-                                                </security:authorize>
                                                 <security:authorize access="hasRole('1090') or hasRole('1091')">
                                                     <div class="submenu submenu-timetable clearfix" id="">
                                                         <h4>Timetable</h4> 
