@@ -1,9 +1,9 @@
 // #############################
 // VARIABLES
 // #############################
-var saveUrl = "create-group/save";
-var readUrl = "create-group/find/groups";
-var updateUrl = "create-group/update";
+var saveUrl = "create-product/save";
+var readUrl = "create-product/find/all";
+var updateUrl = "create-product/update";
 
 var token = $("#txtSecurityToken").val();
 var username = $("#txtUserName").val();
@@ -30,7 +30,7 @@ function initTable() {
         minimumCountColumns: 2,
         clickToSelect: true,
         columns: [{
-                field: 'productName',
+                field: 'loanName',
                 title: 'Product Name',
                 align: 'left',
                 valign: 'bottom',
@@ -78,42 +78,58 @@ $(document).ready(function () {
 //#############################
 function getData() {
     allData = [{
-            title: "Group Name",
-            colomn: "groupName",
-            value: $("#group-name").val()
+            title: "loan Name",
+            colomn: "loanName",
+            value: $("#loan-name").val()
         }, {
-            title: "Date of Establishment",
-            colomn: "establishment",
-            value: $("#establishment").val()
+            title: "Installment Type",
+            colomn: "installmentType",
+            value: $("#installmentType").val()
         }, {
-            title: "Group Officer",
-            colomn: "groupOfficer",
-            value: $("#group-officer").val()
+            title: "Amount",
+            colomn: "productAmount",
+            value: $("#product-amount").val()
         }, {
-            title: "Meeting Day",
-            colomn: "meetingDay",
-            value: $("#meeting-day").val()
+            title: "Interest rate",
+            colomn: "interestRate",
+            value: $("#product-interest-rate").val()
         }, {
-            title: "Group Branch",
-            colomn: "groupBranch",
-            value: $("#group-Branch").val()
+            title: "Terms",
+            colomn: "productTerms",
+            value: $("#product-terms").val()
         }, {
-            title: "Group Address",
-            colomn: "groupAddress",
-            value: $("#group-address").val()
-        }, {
-            title: "Contact Number",
-            colomn: "contactNumber",
-            value: $("#group-contact-number").val()
-        }, {
-            title: "",
-            colomn: "details",
+            title: "Description",
+            colomn: "description",
             value: $("#details").val()
         }, {
             title: "Status",
             colomn: "status",
             value: $("#status").val()
         }, {
+            title: "Starting Fee",
+            colomn: "startingFee",
+            value: $("#starting-fee").val()
+        },{
+            title: "Admin Fee",
+            colomn: "adminFee",
+            value: $("#admin-fee").val()
+        },{
+            title: "Insurance Fee",
+            colomn: "insuranceFee",
+            value: $("#insurance-fee").val()
+        },{
+            title: "Document Fee",
+            colomn: "documentFee",
+            value: $("#document-fee").val()
+        },{
+            title: "Late Fee",
+            colomn: "lateFee",
+            value: $("#late-fee").val()
+        },{
+            title: "Overdue Principle",
+            colomn: "overduePrinciple",
+            value: $("#overdue-principle").val()
+        },{
             title: "",
             colomn: "username",
             value: username
@@ -380,17 +396,22 @@ function operateFormatterAction(value, row, index) {
 
 window.operateEvents = {
     'click .edit': function (e, value, row, index) {
+        
         clearBtn.click();
-        $("#group-id").val(row.groupId);
-        $("#group-name").val(row.groupName);
-        $("#establishment").val(row.dateOfEstablishment);
-        $("#group-officer").val(row.employeeName);
-        $("#meeting-day").val(row.meetingDate);
-        $("#group-Branch").val(row.branch);
-        $("#group-contact-number").val(row.contact);
+        $("#group-id").val(row.loanId);
+        $("#loan-name").val(row.loanName);
+        $("#installmentType").val(row.installmentType);
+        $("#product-amount").val(row.amount);
+        $("#product-interest-rate").val(row.interestRate);
+        $("#product-terms").val(row.terms);
         $("#details").val(row.description);
         $("#status").val(row.status);
-        $("#group-address").val(row.address);
+        $("#starting-fee").val(row.startingFee);
+        $("#admin-fee").val(row.adminFee);
+        $("#insurance-fee").val(row.insuranceFee);
+        $("#document-fee").val(row.documentFee);
+        $("#late-fee").val(row.lateFee);
+        $("#overdue-principle").val(row.overduePrinciple);
         $('#add').html('Update');
     }
 };

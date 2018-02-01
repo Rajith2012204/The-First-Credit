@@ -44,7 +44,7 @@
                         <label class="control-label col-sm-2 col-md-3 is-required"
                                for="title">Installment type</label>
                         <div class="col-sm-9">
-                            <select class="form-control other" id="InstallmentType" name="InstallmentType">
+                            <select class="form-control other" id="installmentType" name="installmentType">
                                 <option>Monthly</option>
                                 <option>Weekly</option>
                                 <option>Daily</option>
@@ -97,7 +97,7 @@
                 <div class="form-section">
                     <h3 class="form-subheading">Fees parameters</h3>
                     <div class="form-group">
-                        <label class="control-label col-sm-3 is-required" for="add1">Starting Fee</label>
+                        <label class="control-label col-sm-3 is-required" for="starting-fee">Starting Fee</label>
                         <div class="col-sm-9">
                             <input type="text" class="form-control other" id="starting-fee"
                                    name="starting-fee" placeholder="Starting Fee" maxlength="25">
@@ -125,7 +125,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="control-label col-sm-3" for="late-fee">Late Fees</label>
+                        <label class="control-label col-sm-3" for="late-fee">Late Fee</label>
                         <div class="col-sm-9">
                             <input type="text" class="form-control other" id="late-fee"
                                    placeholder="Late Fees" maxlength="25">
@@ -145,8 +145,8 @@
                         <button id="add" type="button" class="btn-custom btn-primary">Add</button>
                     </div>
                 </div>
-             </div>
-            
+            </div>
+
             <div class="col-sm-6">
                 <div class="form-section">
                     <h3 class="form-subheading">Products</h3>
